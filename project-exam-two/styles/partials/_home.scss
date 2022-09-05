@@ -1,9 +1,9 @@
-.hero {
-  position: absolute;
+.homepage {
   background-image: url("../../public/images/hero.jpg");
   background-repeat: no-repeat;
   background-position: top;
   background-size: cover;
-  min-height: 1000px;
-  width: 100%;
+  min-height: 2000px;
+  padding-top: 10px;
+  // width: 100%;
 }
