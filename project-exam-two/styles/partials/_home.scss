@@ -1,9 +1,21 @@
-.homepage {
+.hero {
+  position: relative;
+  width: 100%;
+  @media (min-width: 1024px) {
+    top: -60px;
+  }
+  top: 0;
   background-image: url("../../public/images/hero.jpg");
   background-repeat: no-repeat;
   background-position: top;
   background-size: cover;
-  min-height: 2000px;
+  min-height: 1000px;
   padding-top: 10px;
-  // width: 100%;
 }
+
+.search {
+  position: relative;
+  top: 200px;
+  z-index: 1;
+}
+

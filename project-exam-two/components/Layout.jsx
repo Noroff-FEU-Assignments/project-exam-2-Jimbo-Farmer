@@ -32,10 +32,10 @@ export default function Layout({children, pageId}) {
           </Link>
         </nav>
         <div id="hamburger">
-          <div class="burger__layer burger__top"></div>
-          <div class="burger__layer burger__middle1"></div>
-          <div class="burger__layer burger__middle2"></div>
-          <div class="burger__layer burger__bottom"></div>
+          <div className="burger__layer burger__top"></div>
+          <div className="burger__layer burger__middle1"></div>
+          <div className="burger__layer burger__middle2"></div>
+          <div className="burger__layer burger__bottom"></div>
         </div>
       </header>
       <div className='page-container'>{children}</div>
