@@ -1,6 +1,19 @@
 body {
   margin: 0;
   position: relative;
+  font-family: $font-copy;
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-family: $font-header;
+  font-size: 1.2rem;
+}
+
+p {
+  font-size: 16px;
+  font-family: $font-copy;
 }
 
 .hide {

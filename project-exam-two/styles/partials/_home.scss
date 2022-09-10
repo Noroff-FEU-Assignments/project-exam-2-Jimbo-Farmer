@@ -9,13 +9,74 @@
   background-repeat: no-repeat;
   background-position: top;
   background-size: cover;
-  min-height: 1000px;
+  min-height: 600px;
   padding-top: 10px;
 }
 
-.search {
-  position: relative;
-  top: 200px;
-  z-index: 1;
+.introduction {
+  color: white;
+  padding: 5%;
+  text-align: center;
+  margin: 2rem auto 0 auto;
+  max-width: 400px;
+
 }
 
+.search {
+  z-index: 1;
+  padding: 5%;
+  div {
+    margin: 10px auto;
+    font-size: 1rem;
+    background-color: white;
+    width: 80%;
+    max-width: 350px;
+    border-radius: 5px;
+    height: 25px;
+  }
+  label {
+    display: inline-block;
+    width: 100px;
+    padding: 1px 3px;
+    height: 20px;
+  }
+  .search__checkin, .search__checkout {
+    input {
+      cursor: pointer;
+    }
+  }
+  input {
+    text-align: right;
+    border: unset;
+    border-left: 1px solid black;
+    font-size: 1rem;
+    height: 20px;
+    width: 40%;
+    @media (min-width: 450px) {
+      width: 55%;
+    }
+  }
+  button {
+    cursor: pointer;
+    float: right;
+    height: 100%;
+    border-radius: 0 5px 5px 0;
+    border: unset;
+    width: 30px;
+    background-color: $trollsk-blue;
+    color: white;
+    &:hover {
+      background-color: $sunshine-yellow;
+      color: black;
+    }
+  }
+}
+
+.search__dropdown {
+  width: 100%;
+}
+
+.gateway {
+  text-align: center;
+  padding: 5%;
+}
