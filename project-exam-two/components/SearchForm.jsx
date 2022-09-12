@@ -3,11 +3,11 @@ import { BASE_URL } from "../constants/baseUrl";
 import axios from "axios";
 import Dropdown from './Dropdown';
 
-export default function SearchForm(list) {
-  console.log(list.list)
+export default function SearchForm({list}) {
+  console.log(list.accommodation.data)
   const [filteredList, setFilteredList] = useState([]);
   function handleChange(e){
-    setFilteredList(searchDropdown(list.list.accommodation.data, e.target.value));
+    setFilteredList(searchDropdown(list.accommodation.data, e.target.value));
     console.log(filteredList);
   }
   return(

@@ -9,7 +9,12 @@ import axios from "axios";
 
 
 export default function Home(props) {
+  console.log(props);
   dateDefault();
+  useEffect(()=> {
+    console.log(document.querySelector("#checkin").value);
+  })
+  
   return(
     <Layout pageId='homepage'>
       <Head title='Home' description='Browse and book accommodation in the Bergen area with Holidaze - your gateway to the fjords'/>

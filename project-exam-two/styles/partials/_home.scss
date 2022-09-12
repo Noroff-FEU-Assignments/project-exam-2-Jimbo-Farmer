@@ -1,3 +1,10 @@
+.homepage {
+  header {
+    background-color: transparent;
+    height: unset;
+  }
+}
+
 .hero {
   position: relative;
   width: 100%;
@@ -72,7 +79,36 @@
   }
 }
 
-.search__dropdown {
+.dropdown {
+  padding: 0;
+  li {
+    list-style: none;
+    position: relative;
+    
+    margin: 5px;
+    border-radius: 5px;
+    background-color: aliceblue;
+    :hover {
+      background-color: white;
+    }
+    a {
+      height: 50px;
+      border-radius: 5px;
+    }
+    h3 {
+      display: inline-block;
+      margin: 5px;
+      text-transform: capitalize;
+      color: black;
+    }
+    
+  }
+  img {
+    float: right;
+    border-radius: 0 5px 5px 0;
+    height: 50px;
+    width: 50px;
+  }
   width: 100%;
 }
 
@@ -80,3 +116,5 @@
   text-align: center;
   padding: 5%;
 }
+
+

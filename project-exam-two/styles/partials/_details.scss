@@ -1,0 +1,19 @@
+.details {
+  padding: 20px 10%;
+}
+
+.details__image-container {
+  text-align: center;
+  img {
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+.details__thumbnail-container {
+  width: 80px;
+  img {
+    width: 100%;
+  } 
+}
+
