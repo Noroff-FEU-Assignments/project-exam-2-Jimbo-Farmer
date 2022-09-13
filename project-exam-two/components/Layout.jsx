@@ -6,7 +6,7 @@ export default function Layout({children, pageId}) {
   const router = useRouter();
   hamburger();
   return(
-    <div className={pageId}>
+    <div id={pageId}>
       <header>
         <Link href="/">
           <a id='page-title'>Holidaze</a>

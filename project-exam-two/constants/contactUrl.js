@@ -1,0 +1,1 @@
+export const CONTACT_URL = "https://project-exam-accommodation-jf.herokuapp.com/api/messages";

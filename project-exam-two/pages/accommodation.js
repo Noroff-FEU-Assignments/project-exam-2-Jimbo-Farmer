@@ -10,7 +10,10 @@ export default function AllAccommodation(props) {
     <Layout pageId='all-accommodation-page'>
       <Head title='Home' description='Browse and book accommodation in the Bergen area with Holidaze - your gateway to the fjords'/>
       <div className='all-accommodation__container'>
-        <h1>Browse all accommodation on Holidaze</h1>
+        <div className='all-accommodation__intro'>
+          <h1>Accommodation</h1>
+          <p>Browse through everything we have to offer at Holidaze</p>
+        </div>
         {props.accommodation.data.map((item)=>{
           return <AccommCard key={item.id} acc={item} />
         })}

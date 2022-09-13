@@ -1,0 +1,35 @@
+#contact-page__container {
+  padding: 20px 5%;
+}
+
+form {
+  max-width: 450px;
+  margin: 0 auto;
+  border: 1px solid black;
+  border-radius: 5px;
+  padding: 20px 0;
+  input, textarea, label, .form__error {
+    display: block;
+    width: 80%;
+    max-width: 400px;
+    margin: 0 auto;
+    box-sizing: border-box;
+  }
+  input, textarea {
+    margin-bottom: 10px;
+  }
+  .button-container {
+    margin: 10px auto;
+    text-align: center;
+    button {
+      color: white;
+      background-color: $trollsk-blue;
+      border: unset;
+      padding: 5px 20px;
+      border-radius: 5px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -1,12 +1,14 @@
-.all-accommodation-page {
+#all-accommodation-page {
   header {
     background-color: $trollsk-blue;
     height: 60px;
   }
+  .all-accommodation__intro {
+    padding: 10px 5%;
+  }
   h1 {
     margin: 0;
     font-weight: 400;
-    padding: 10px 5%;
   } 
 }
 
@@ -46,20 +48,6 @@
       object-fit: cover;
       object-position: bottom;
       border-radius: 5px 5px 0 0;
-    }
-  }
-  .accommodation-card__button-container{
-    margin: 10px auto;
-    text-align: center;
-    button {
-      color: white;
-      background-color: $trollsk-blue;
-      border: unset;
-      padding: 5px 20px;
-      border-radius: 5px;
-      &:hover {
-        cursor: pointer;
-      }
     }
   }
 }

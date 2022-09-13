@@ -12,7 +12,7 @@ export default function Home(props) {
   console.log(props);
   dateDefault();
   useEffect(()=> {
-    console.log(document.querySelector("#checkin").value);
+    console.log(document.querySelector("#checkin").value.split("-"));
   })
   
   return(
@@ -27,6 +27,7 @@ export default function Home(props) {
           <SearchForm list={props} />
         </div>
         <h1 className='gateway'>Your Gateway to the Fjords</h1>
+        <p>Need help finding your dream getaway? Contact us</p>
       </div>
     </Layout>
   )
