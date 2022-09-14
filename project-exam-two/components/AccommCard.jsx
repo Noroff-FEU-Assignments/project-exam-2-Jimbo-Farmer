@@ -9,7 +9,7 @@ export default function AccommCard({acc}) {
         <div className="accommodation-card__details">
           <h2>{acc.attributes.name}</h2>
           <div className="accommodation-card__description">{acc.attributes.description}</div>
-          <div className="accommodation-card__button-container"><button>Details</button></div>
+          <div className="accommodation-card__button-container button-container"><button>Details</button></div>
         </div>
       </a>
     </div>

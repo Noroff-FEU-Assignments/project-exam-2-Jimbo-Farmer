@@ -1,0 +1,1 @@
+export const LOGIN_URL = "https://project-exam-accommodation-jf.herokuapp.com/admin/login";

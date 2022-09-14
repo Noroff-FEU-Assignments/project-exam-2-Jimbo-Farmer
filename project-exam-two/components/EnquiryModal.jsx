@@ -5,7 +5,7 @@ import {useForm} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState } from 'react';
-import { CONTACT_URL } from '../constants/contactUrl';
+import { ENQUIRY_URL } from '../constants/enquiriesUrl';
 
 const schema = yup.object().shape({
   accommodationname: yup.string(),
@@ -15,11 +15,15 @@ const schema = yup.object().shape({
   children: yup.number().required("Please provide number of children"),
   name: yup.string().required("Please provide a name"),
   email: yup.string().required("Please provide your email address").email("Please enter a valid email address"),
-  phone: yup.number().required("Please provide a contact number"),
+  phone: yup.string().required("Please provide a contact number"),
   query: yup.string().max(300, "Maximum 300 characters")
 })
 
-export default function Enquiry({accommName}){
+export default function EnquiryModal({accommName, onClose, show}){
+  let modalVisibility = "hide";
+  if(show){
+    modalVisibility = "";
+  }
   const [loginError, setLoginError] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const {register, handleSubmit, formState: {errors}} = useForm({
@@ -31,7 +35,7 @@ export default function Enquiry({accommName}){
     setLoginError(null);
 
     try {
-      const response = await axios.post(CONTACT_URL, {"data": data});
+      const response = await axios.post(ENQUIRY_URL, {"data": data});
       console.log(response);
     } catch (error) {
       console.log(error);
@@ -44,50 +48,59 @@ export default function Enquiry({accommName}){
   }
 
   return(  
-    <div id='enquiry-modal__container'>
+    <div id='enquiry-modal__container' className={modalVisibility}>
+      <button className='close-button' type='button' onClick={onClose}>Close</button>
       <div className='enquiry-intro'>
         <h1>Enquiry</h1>
         <p>Please fill in the enquiry form below and the accommodation provider will get back to you as soon as possible.</p>
       </div>
       <form id='enquiry-form' onSubmit={handleSubmit(onSubmit)}>
-        <div className='enquiry-form__item'>
+        <div className='enquiry-form__item enquiry-form__accommodation-name'>
           <label htmlFor='accommodationname'>Accommodation</label>
           <input {...register("accommodationname")} defaultValue={accommName}/>
           {errors.accommodationname && <span className='form__error enquiry-form__error'>{errors.accommodationname.message}</span>}
         </div>
 
-        <div className='enquiry-form__item'>
+        <div className='enquiry-form__item enquiry-form__checkin'>
+          <label htmlFor='checkin'>Check-in Date</label>
+          <input {...register("checkin")} type="date"/>
+          {errors.checkin && <span className='form__error enquiry-form__error'>{errors.checkin.message}</span>}
+        </div>
+        <div className='enquiry-form__item enquiry-form__checkout'>
+          <label htmlFor='checkout'>Check-out Date</label>
+          <input {...register("checkout")} type="date"/>
+          {errors.checkout && <span className='form__error enquiry-form__error'>{errors.checkout.message}</span>}
+        </div>
+        <div className='enquiry-form__additional-label'>Number of guests:</div>
+        <div className='enquiry-form__item enquiry-form__adults'>
+          <label htmlFor='adults'>Adults</label>
+          <input {...register("adults")} type="number" defaultValue="1"/>
+          {errors.adults && <span className='form__error enquiry-form__error'>{errors.adults.message}</span>}
+        </div>
+        <div className='enquiry-form__item enquiry-form__children'>
+          <label htmlFor='children'>Children</label>
+          <input {...register("children")} type="number" defaultValue="0"/>
+          {errors.children && <span className='form__error enquiry-form__error'>{errors.children.message}</span>}
+        </div>
+        <div className='enquiry-form__item enquiry-form__name'>
           <label htmlFor='name'>Name</label>
           <input {...register("name")} />
           {errors.name && <span className='form__error enquiry-form__error'>{errors.name.message}</span>}
         </div>
-
-        <div className='enquiry-form__item'>
-          <label htmlFor='name'>Name</label>
-          <input {...register("name")} />
-          {errors.name && <span className='form__error enquiry-form__error'>{errors.name.message}</span>}
-        </div>
-
-        <div className='enquiry-form__item'>
-          <label htmlFor='name'>Name</label>
-          <input {...register("name")} />
-          {errors.name && <span className='form__error enquiry-form__error'>{errors.name.message}</span>}
-        </div>
-
-        <div className='enquiry-form__item'>
-          <label htmlFor='name'>Name</label>
-          <input {...register("name")} />
-          {errors.name && <span className='form__error enquiry-form__error'>{errors.name.message}</span>}
-        </div>
-        <div className='enquiry-form__item'>
+        <div className='enquiry-form__item enquiry-form__email'>
           <label htmlFor='email'>Email</label>
           <input {...register("email")} />
           {errors.email && <span className='form__error enquiry-form__error'>{errors.email.message}</span>}
         </div>
-        <div className='enquiry-form__item'>
-          <label htmlFor='message'>Message</label>
-          <textarea {...register("messagecontent")} />
-          {errors.messagecontent && <span className='form__error enquiry-form__error'>{errors.messagecontent.message}</span>}
+        <div className='enquiry-form__item enquiry-form__phone'>
+          <label htmlFor='phone'>Phone</label>
+          <input {...register("phone")} type="tel"/>
+          {errors.phone && <span className='form__error enquiry-form__error'>{errors.phone.message}</span>}
+        </div>
+        <div className='enquiry-form__item enquiry-form__query'>
+          <label htmlFor='query'>Additional queries</label>
+          <textarea {...register("query")} rows="4"/>
+          {errors.query && <span className='form__error enquiry-form__error'>{errors.query.message}</span>}
         </div>
         <div className='enquiry-form__button-container button-container'>
           <button>Send</button>

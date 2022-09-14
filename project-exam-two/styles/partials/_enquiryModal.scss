@@ -1,0 +1,40 @@
+#enquiry-modal__container {
+  position: absolute;
+  top: 0;
+  z-index: 10;
+  padding: 20px;
+  background-color: $star-sky;
+  color: white;
+  .close-button {
+    position: absolute;
+    top: 20px;
+    right: 5%;
+  }
+
+
+}
+.enquiry-form__additional-label {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.enquiry-form__adults, .enquiry-form__children, .enquiry-form__checkin, .enquiry-form__checkout {
+  width: 60px;
+  display: inline-block;
+  margin-left: 10%;
+  label, input {
+    width: 100%;
+  }
+}
+
+.enquiry-form__checkin, .enquiry-form__checkout {
+  width: 130px;
+}
+.enquiry-form__checkout {
+  margin-right: 10%;
+}
+
+#enquiry-form {
+  background-color: white;
+  color: black;
+}

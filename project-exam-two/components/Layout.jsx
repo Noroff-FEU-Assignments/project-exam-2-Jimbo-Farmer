@@ -19,7 +19,7 @@ export default function Layout({children, pageId}) {
             <a className={router.pathname === "/contact" ? "nav__link nav__link-active" : "nav__link"}>Contact</a>
           </Link>
           <Link href="/login">
-            <a className={router.pathname === "/login" ? "nav__link nav__link-active" : "nav__link"}>Admin Login</a>
+            <a className={router.pathname === "/login" ? "nav__link nav__link-active" : "nav__link"}>Administration</a>
           </Link>
           <Link href="/dashboard">
             <a className='hide'></a>

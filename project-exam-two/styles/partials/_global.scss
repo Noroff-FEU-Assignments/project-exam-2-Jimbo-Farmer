@@ -24,3 +24,19 @@ p {
 .hide {
   display: none;
 }
+
+.button-container {
+  margin: 10px auto;
+  text-align: center;
+  button {
+    color: white;
+    background-color: $trollsk-blue;
+    border: unset;
+    padding: 5px 20px;
+    border-radius: 5px;
+    &:hover {
+      cursor: pointer;
+      background-color: darken($color: $trollsk-blue, $amount: 10%);
+    }
+  }
+}

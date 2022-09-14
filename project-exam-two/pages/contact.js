@@ -14,27 +14,73 @@ const schema = yup.object().shape({
 })
 
 export default function Contact(){
-  const [loginError, setLoginError] = useState(null);
+  const [sendError, setSendError] = useState(null);
   const [submitting, setSubmitting] = useState(false);
+  const [success, setSuccess] = useState(false);
   const {register, handleSubmit, formState: {errors}} = useForm({
     resolver: yupResolver(schema),
   });
 
   async function onSubmit(data){
+    setSuccess(false);
     setSubmitting(true);
-    setLoginError(null);
+    setSendError(null);
 
     try {
       const response = await axios.post(CONTACT_URL, {"data": data});
-      console.log(response);
+      if(response.request.statusText === "OK"){
+        setSuccess(true);
+      }
     } catch (error) {
       console.log(error);
+      setSendError("Apologies, an error has occurred.");
     } finally {
       setSubmitting(false);
     }
+  }
 
-    console.log(data);
+  if(submitting){
+    return (
+      <Layout pageId="contact-page">
+        <Head title='Contact' description="Any questions? Take contact and someone from the Holidaze team will get back to you with help and advice."/>
+        <div id='contact-page__container'>
+          <div className='contact-intro'>
+            <h1>Contact us</h1>
+            <p>Got a query? Wondering where to stay or what to do? Don't hesitate to get in touch! </p>
+          </div>
+          <div>Sending...</div>
+        </div>
+      </Layout>
+    )
+  }
 
+  if(success){
+    return (
+      <Layout pageId="contact-page">
+        <Head title='Contact' description="Any questions? Take contact and someone from the Holidaze team will get back to you with help and advice."/>
+        <div id='contact-page__container'>
+          <div className='contact-intro'>
+            <h1>Contact us</h1>
+            <p>Got a query? Wondering where to stay or what to do? Don't hesitate to get in touch! </p>
+          </div>
+          <div>Your message has been received!</div>
+          <a className='contact-page__home-link' href="/">Return to homepage</a>
+        </div>
+      </Layout>
+      )
+  }
+
+  if(sendError){
+    <Layout pageId="contact-page">
+      <Head title='Contact' description="Any questions? Take contact and someone from the Holidaze team will get back to you with help and advice."/>
+      <div id='contact-page__container'>
+        <div className='contact-intro'>
+          <h1>Contact us</h1>
+          <p>Got a query? Wondering where to stay or what to do? Don't hesitate to get in touch! </p>
+        </div>
+        <div>{sendError}</div>
+      </div>
+    </Layout>
   }
 
   return(
@@ -57,8 +103,8 @@ export default function Contact(){
             {errors.email && <span className='form__error contact-form__error'>{errors.email.message}</span>}
           </div>
           <div className='contact-form__item'>
-            <label htmlFor='message'>Message</label>
-            <textarea {...register("messagecontent")} />
+            <label htmlFor='messagecontent'>Message</label>
+            <textarea {...register("messagecontent")} rows="5"/>
             {errors.messagecontent && <span className='form__error contact-form__error'>{errors.messagecontent.message}</span>}
           </div>
           <div className='contact-form__button-container button-container'>

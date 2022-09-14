@@ -1,4 +1,4 @@
-#contact-page__container {
+#contact-page__container, #login-page__container {
   padding: 20px 5%;
 }
 
@@ -18,18 +18,10 @@ form {
   input, textarea {
     margin-bottom: 10px;
   }
-  .button-container {
-    margin: 10px auto;
-    text-align: center;
-    button {
-      color: white;
-      background-color: $trollsk-blue;
-      border: unset;
-      padding: 5px 20px;
-      border-radius: 5px;
-      &:hover {
-        cursor: pointer;
-      }
-    }
-  }
+}
+
+.contact-page__home-link {
+  text-decoration: underline;
+  text-transform: none;
+  color: $star-sky;
 }
