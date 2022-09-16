@@ -14,7 +14,6 @@ const schema = yup.object().shape({
   name: yup.string().required("Please enter the accommodation name"),
   description: yup.string().required("Please provide a description").min(30, "Minimum 30 characters"),
   price: yup.number().required("Please enter price per night").min(100, "Minimum price 100kr per night"),
-  // images: yup.number()
 })
 
 export default function CreateAccommodation(){
@@ -27,8 +26,7 @@ export default function CreateAccommodation(){
     }
   }, [auth]);
 
-
-  const [imageId, setImageId] = useState(20);   // 20 is the current ID of the placeholder image stored on strapi. 
+  const [imageId, setImageId] = useState([20]);   // 20 is the current ID of the placeholder image stored on strapi. 
   const [sendError, setSendError] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -42,14 +40,26 @@ export default function CreateAccommodation(){
   async function handleImageSubmit(e){
     e.preventDefault();
     const formData = new FormData();
-    formData.append('files', files[0]);
+    for(let i = 0; i < files.length; i++){    //Add all image files to be uploaded
+      formData.append('files', files[i]);
+    }
+    
     try {
       const response = await axios.post(BASE_URL+'api/upload', formData, {headers: {Authorization:  `Bearer ${auth.data.jwt}`}});
+      setSubmitting(true);
       if(response.statusText === "OK"){
-        setImageId(response.data[0].id);
+        console.log(response);
+        let imageIdArray = [];
+        for(let i = 0; i < response.data.length; i++){ // Get IDs of all newly uploaded image files and put in an array. 
+          imageIdArray.push(response.data[i].id)
+        }
+        setImageId(imageIdArray);
       }
     } catch (error) {
       console.log(error);
+      setSendError("Apologies, an error has occurred.");
+    } finally {
+      setSubmitting(false);
     }
   }
 
@@ -57,9 +67,10 @@ export default function CreateAccommodation(){
     setSuccess(false);
     setSubmitting(true);
     setSendError(null);
-    data.images = imageId;
+    data.images = imageId;  // Add image ID array to 'images' key to link new accommodation to these images. 
     try {
       const response = await axios.post(BASE_URL + 'api/accommodations', {"data": data}, {headers: {Authorization:  `Bearer ${auth.data.jwt}`}} );
+      setSubmitting(true);
       if(response.request.statusText === "OK"){
         setSuccess(true);
       }
@@ -131,7 +142,7 @@ export default function CreateAccommodation(){
         </div>
         <form id='image-form' onSubmit={handleImageSubmit}>
           <label htmlFor="imageFile">Add accommodation image</label>
-          <input type="file" onChange={(e)=>setFiles(e.target.files)} />
+          <input type="file" onChange={(e)=>setFiles(e.target.files)} multiple/>
           <div className='image-form__image-display'></div>
           <button>Add Image</button>
         </form>
@@ -151,11 +162,6 @@ export default function CreateAccommodation(){
             <input {...register("price")} />
             {errors.price && <span className='form__error create-form__error'>{errors.price.message}</span>}
           </div>
-          {/* <div className='create-form__item'>
-            <label htmlFor='images'>Image</label>
-            <input {...register("images")} type='number' defaultValue={imageId}/>
-            {errors.images && <span className='form__error create-form__error'>{errors.images.message}</span>}
-          </div> */}
           <div className='create-form__button-container button-container'>
             <button>Submit</button>
           </div> 
