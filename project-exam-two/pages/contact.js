@@ -26,7 +26,6 @@ export default function Contact(){
     setSuccess(false);
     setSubmitting(true);
     setSendError(null);
-
     try {
       const response = await axios.post(CONTACT_URL, {"data": data});
       if(response.request.statusText === "OK"){
@@ -44,7 +43,7 @@ export default function Contact(){
     return (
       <Layout pageId="contact-page">
         <Head title='Contact' description="Any questions? Take contact and someone from the Holidaze team will get back to you with help and advice."/>
-        <div id='contact-page__container main'>
+        <div id='contact-page__container' className='main'>
           <div className='contact-intro'>
             <h1>Contact us</h1>
             <p>Got a query? Wondering where to stay or what to do? Don't hesitate to get in touch! </p>
@@ -59,7 +58,7 @@ export default function Contact(){
     return (
       <Layout pageId="contact-page">
         <Head title='Contact' description="Any questions? Take contact and someone from the Holidaze team will get back to you with help and advice."/>
-        <div id='contact-page__container'>
+        <div id='contact-page__container' className='main'>
           <div className='contact-intro'>
             <h1>Contact us</h1>
             <p>Got a query? Wondering where to stay or what to do? Don't hesitate to get in touch! </p>
@@ -77,7 +76,7 @@ export default function Contact(){
   if(sendError){
     <Layout pageId="contact-page">
       <Head title='Contact' description="Any questions? Take contact and someone from the Holidaze team will get back to you with help and advice."/>
-      <div id='contact-page__container'>
+      <div id='contact-page__container' className='main'>
         <div className='contact-intro'>
           <h1>Contact us</h1>
           <p>Got a query? Wondering where to stay or what to do? Don't hesitate to get in touch! </p>
@@ -90,7 +89,7 @@ export default function Contact(){
   return(
     <Layout pageId="contact-page">
       <Head title='Contact' description="Any questions? Take contact and someone from the Holidaze team will get back to you with help and advice."/>
-      <div id='contact-page__container'>
+      <div id='contact-page__container' className='main'>
         <div className='contact-intro'>
           <h1>Contact us</h1>
           <p>Got a query? Wondering where to stay or what to do? Don't hesitate to get in touch! </p>
