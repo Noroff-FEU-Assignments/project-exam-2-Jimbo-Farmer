@@ -1,22 +1,28 @@
+import { useEffect, useContext } from 'react';
 import axios from 'axios';
 import Head from '../components/Head';
 import Layout from '../components/Layout';
+import Dashboard from '../components/Dashboard';
 import {useForm} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState } from 'react';
 import { LOGIN_URL } from '../constants/loginUrl';
+import AuthContext from '../context/AuthContext';
 
 const schema = yup.object().shape({
-  email: yup.string().required("Please provide an email").email("Please enter a valid email address"),
+  identifier: yup.string().required("Please provide an email").email("Please enter a valid email address"),
   password: yup.string().required("Please enter a password")
 })
 
 export default function Login(){
-  if(JSON.parse(localStorage.getItem('Token'))){
-    setSuccess(true)
-  }
-
+  const [auth, setAuth] = useContext(AuthContext);
+  useEffect(()=>{
+    if(auth){
+      setSuccess(true)
+    }
+  })
+  
   const [sendError, setSendError] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
@@ -24,15 +30,17 @@ export default function Login(){
     resolver: yupResolver(schema),
   });
 
+  
+
   async function onSubmit(data){
     setSuccess(false);
     setSubmitting(true);
     setSendError(null);
-    console.log(data);
     try {
       const response = await axios.post(LOGIN_URL, data);
+      console.log(response);
       if(response.statusText === "OK"){
-        localStorage.setItem('Token', JSON.stringify(response.data.data.token));
+        setAuth(response);
         setSuccess(true);
       }
       
@@ -48,12 +56,12 @@ export default function Login(){
     return (
     <Layout pageId="login-page">
       <Head title='Administration' description="Read messages and create accommodation listings from the dashboard."/>
-      <div id='login-page__container'>
+      <div id='login-page__container' className='main'>
         <div className='login-intro'>
           <h1>Administrator Login</h1>
           <p>Please log in to continue</p>
         </div>
-        <div>Logging in...</div>
+        <div>Logging in...</div><div className='loading'></div>
       </div>
     </Layout>
     )
@@ -63,12 +71,8 @@ export default function Login(){
     return (
       <Layout pageId="login-page">
         <Head title='Administration' description="Read messages and create accommodation listings from the dashboard."/>
-        <div id='login-page__container'>
-          <div className='login-intro'>
-            <h1>Dashboard</h1>
-            <p>View messages, booking enquiries and create accommodation listings</p>
-          </div>
-          <button>Logout</button>
+        <div id='login-page__container' className='main'>
+          <Dashboard />
         </div>
       </Layout>
     )
@@ -77,7 +81,7 @@ export default function Login(){
   if(sendError){
     <Layout pageId="login-page">
       <Head title='Administration' description="Read messages and create accommodation listings from the dashboard."/>
-      <div id='login-page__container'>
+      <div id='login-page__container' className='main'>
         <div className='login-intro'>
           <h1>Administrator Login</h1>
           <p>Please log in to continue</p>
@@ -90,16 +94,16 @@ export default function Login(){
   return(
     <Layout pageId="login-page">
       <Head title='Administration' description="Read messages and create accommodation listings from the dashboard."/>
-        <div id='login-page__container'>
+        <div id='login-page__container' className='main'>
           <div className='login-intro'>
           <h1>Administrator Login</h1>
           <p>Please log in to continue</p>
         </div>
         <form id='login-form' onSubmit={handleSubmit(onSubmit)}>
           <div className='login-form__item'>
-            <label htmlFor='email'>Email</label>
-            <input {...register("email")} />
-            {errors.email && <span className='form__error login-form__error'>{errors.email.message}</span>}
+            <label htmlFor='identifier'>Email</label>
+            <input {...register("identifier")} />
+            {errors.identifier && <span className='form__error login-form__error'>{errors.identifier.message}</span>}
           </div>
           <div className='login-form__item'>
             <label htmlFor='password'>Password</label>

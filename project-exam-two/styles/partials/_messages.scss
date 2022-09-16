@@ -1,0 +1,19 @@
+.message-card, .enquiry-card {
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 20px auto;
+  padding: 10px;
+  h2 {
+    margin: 3px auto;
+    font-size: 21px;
+    font-weight: 400;
+  }
+}
+
+.dashboard-link {
+  color: black;
+  text-transform: none;
+  text-decoration: underline;
+  position: absolute;
+  right: 5%;
+}

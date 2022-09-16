@@ -1,6 +1,7 @@
 import axios from 'axios';
 import Head from '../components/Head';
 import Layout from '../components/Layout';
+import Link from 'next/link';
 import {useForm} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -43,7 +44,7 @@ export default function Contact(){
     return (
       <Layout pageId="contact-page">
         <Head title='Contact' description="Any questions? Take contact and someone from the Holidaze team will get back to you with help and advice."/>
-        <div id='contact-page__container'>
+        <div id='contact-page__container main'>
           <div className='contact-intro'>
             <h1>Contact us</h1>
             <p>Got a query? Wondering where to stay or what to do? Don't hesitate to get in touch! </p>
@@ -64,7 +65,10 @@ export default function Contact(){
             <p>Got a query? Wondering where to stay or what to do? Don't hesitate to get in touch! </p>
           </div>
           <div>Your message has been received!</div>
-          <a className='contact-page__home-link' href="/">Return to homepage</a>
+          <Link href="/">
+            <a className='contact-page__home-link'>Return to homepage</a>
+          </Link>
+          
         </div>
       </Layout>
       )
