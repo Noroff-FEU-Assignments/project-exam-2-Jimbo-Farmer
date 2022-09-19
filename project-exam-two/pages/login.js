@@ -21,7 +21,7 @@ export default function Login(){
     if(auth){
       setSuccess(true)
     }
-  })
+  },[auth]);
   
   const [sendError, setSendError] = useState(null);
   const [submitting, setSubmitting] = useState(false);

@@ -16,7 +16,7 @@ export default function Messages() {
     if(!auth){
       router.push('/login');
     }
-  }, [auth]);
+  });
   
   useEffect(() => {
     async function getMessages(){
@@ -28,7 +28,7 @@ export default function Messages() {
       }
     }
     getMessages();
-  }, [])
+  });
   
   if(!messageList.length){
     return (

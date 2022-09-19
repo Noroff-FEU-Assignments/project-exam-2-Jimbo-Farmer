@@ -1,11 +1,12 @@
 import { useState } from "react";
 import EnquiryModal from './EnquiryModal';
+import Image from "next/image";
 
 export default function Details({acc}) {
   function thumbnails(){
     if(acc.data.attributes.images.data.length > 1){
       for(let i = 1; i <= acc.data.attributes.images.data.length; i++){
-        return <div class="details__thumbnail-container"><img src={acc.data.attributes.images.data[i].attributes.url} alt={acc.data.attributes.images.data[i].attributes.alternativeText} /></div>;
+        return <div className="details__thumbnail-container"><Image src={acc.data.attributes.images.data[i].attributes.url} alt={acc.data.attributes.images.data[i].attributes.alternativeText} width={150} height={150}/></div>;
       }
     }
   }
@@ -20,7 +21,7 @@ export default function Details({acc}) {
       <div className="details">
         <h1>{acc.data.attributes.name}</h1>
         <div className="details__image-container">
-          <img src={acc.data.attributes.images.data[0].attributes.url} alt={acc.data.attributes.images.data[0].attributes.alternativeText} />
+          <Image src={acc.data.attributes.images.data[0].attributes.url} alt={acc.data.attributes.images.data[0].attributes.alternativeText} width={800} height={800}/>
         </div>
         <div className="details__thumbnails">{thumbnailDivs}</div>
         <div className="details__description"><p>{acc.data.attributes.description}</p></div>

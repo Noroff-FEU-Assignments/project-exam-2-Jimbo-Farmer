@@ -16,7 +16,7 @@ export default function Enquiries() {
     if(!auth){
       router.push('/login');
     }
-  }, [auth]);
+  });
   
   useEffect(() => {
     async function getEnquirys(){
@@ -28,7 +28,7 @@ export default function Enquiries() {
       }
     }
     getEnquirys();
-  }, [])
+  });
   
   if(!enquiryList.length){
     return(
@@ -55,7 +55,7 @@ export default function Enquiries() {
           <p>View, sort and filter booking enquiries.</p>
         </div>
         {enquiryList.map((enquiry)=>{
-          return <EnquiryCard key={enquiry.id} accommodation={enquiry.attributes.accommodationname} checkin={enquiry.attributes.checkin} checkout={enquiry.attributes.checkout} adults={enquiry.attributes.adults} children={enquiry.attributes.children} name={enquiry.attributes.name} email={enquiry.attributes.email} phone={enquiry.attributes.phone} query={enquiry.attributes.query} /> 
+          return <EnquiryCard key={enquiry.id} accommodation={enquiry.attributes.accommodationname} checkin={enquiry.attributes.checkin} checkout={enquiry.attributes.checkout} adults={enquiry.attributes.adults} noOfChildren={enquiry.attributes.children} name={enquiry.attributes.name} email={enquiry.attributes.email} phone={enquiry.attributes.phone} query={enquiry.attributes.query} /> 
         })}
       </div>
     </Layout>

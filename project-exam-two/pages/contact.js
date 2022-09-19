@@ -46,7 +46,7 @@ export default function Contact(){
         <div id='contact-page__container' className='main'>
           <div className='contact-intro'>
             <h1>Contact us</h1>
-            <p>Got a query? Wondering where to stay or what to do? Don't hesitate to get in touch! </p>
+            <p>Got a query? Wondering where to stay or what to do? Don&apos;t hesitate to get in touch!</p>
           </div>
           <div>Sending...</div>
         </div>
@@ -61,7 +61,7 @@ export default function Contact(){
         <div id='contact-page__container' className='main'>
           <div className='contact-intro'>
             <h1>Contact us</h1>
-            <p>Got a query? Wondering where to stay or what to do? Don't hesitate to get in touch! </p>
+            <p>Got a query? Wondering where to stay or what to do? Don&apos;t hesitate to get in touch! </p>
           </div>
           <div>Your message has been received!</div>
           <Link href="/">
@@ -74,16 +74,19 @@ export default function Contact(){
   }
 
   if(sendError){
-    <Layout pageId="contact-page">
-      <Head title='Contact' description="Any questions? Take contact and someone from the Holidaze team will get back to you with help and advice."/>
-      <div id='contact-page__container' className='main'>
-        <div className='contact-intro'>
-          <h1>Contact us</h1>
-          <p>Got a query? Wondering where to stay or what to do? Don't hesitate to get in touch! </p>
+    return (
+      <Layout pageId="contact-page">
+        <Head title='Contact' description="Any questions? Take contact and someone from the Holidaze team will get back to you with help and advice."/>
+        <div id='contact-page__container' className='main'>
+          <div className='contact-intro'>
+            <h1>Contact us</h1>
+            <p>Got a query? Wondering where to stay or what to do? Don&apos;t hesitate to get in touch! </p>
+          </div>
+          <div>{sendError}</div>
         </div>
-        <div>{sendError}</div>
-      </div>
-    </Layout>
+      </Layout>
+    )
+    
   }
 
   return(
@@ -92,7 +95,7 @@ export default function Contact(){
       <div id='contact-page__container' className='main'>
         <div className='contact-intro'>
           <h1>Contact us</h1>
-          <p>Got a query? Wondering where to stay or what to do? Don't hesitate to get in touch! </p>
+          <p>Got a query? Wondering where to stay or what to do? Don&apos;t hesitate to get in touch! </p>
         </div>
         <form id='contact-form' onSubmit={handleSubmit(onSubmit)}>
           <div className='contact-form__item'>

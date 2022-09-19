@@ -1,15 +1,26 @@
 import { useEffect, useState } from 'react';
-import { BASE_URL } from "../constants/baseUrl";
-import axios from "axios";
 import Dropdown from './Dropdown';
+import { useRouter } from 'next/router';
 
 export default function SearchForm({list}) {
-  console.log(list.accommodation.data)
   const [filteredList, setFilteredList] = useState([]);
+  const [input, setInput] = useState('');
+  const router = useRouter();
   function handleChange(e){
     setFilteredList(searchDropdown(list.accommodation.data, e.target.value));
-    console.log(filteredList);
+    if(e.target.value.length){
+      setInput(e.target.value);
+    } else {
+      setInput('');
+    }
   }
+  function handleSearchClick(e){
+    e.preventDefault();
+    localStorage.setItem('ResultsList', JSON.stringify(filteredList));
+    localStorage.setItem('Input', JSON.stringify(input));
+    router.push('/results');
+  }
+
   return(
     <form className='search'>
       <div className='search__checkin'>
@@ -23,8 +34,8 @@ export default function SearchForm({list}) {
       <div className='search__accommodation'>
         <label htmlFor="accommodation-search">Search</label>
         <input onKeyUp={handleChange} type="text" name="accommodation-search" id="accommodation-search" />
-        <button>Go</button> 
-        <Dropdown filteredList={filteredList} />        
+        <button onClick={handleSearchClick}>Go</button> 
+        <Dropdown filteredList={filteredList} input={input} />        
       </div>
     </form>
   )

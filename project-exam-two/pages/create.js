@@ -24,7 +24,7 @@ export default function CreateAccommodation(){
     if(!auth){
       router.push('/login');
     }
-  }, [auth]);
+  });
 
   const [imageId, setImageId] = useState([20]);   // 20 is the current ID of the placeholder image stored on strapi. 
   const [sendError, setSendError] = useState(null);
@@ -106,8 +106,9 @@ export default function CreateAccommodation(){
           <div className='create-intro'>
             <Link href='/login'><a className='dashboard-link'>Back to Dashboard</a></Link>
             <h1>Create New Listing</h1>
-            <p>New accommodation created successfully!</p>
+            <p>Create a new accommodation listing using the form below</p>
           </div>
+          <p>New accommodation created successfully!</p>
           <button onClick={()=>{setSuccess(false)}}>Add Another</button>
         </div>
       </Layout>
@@ -141,7 +142,7 @@ export default function CreateAccommodation(){
           <p>Create a new accommodation listing using the form below</p>
         </div>
         <form id='image-form' onSubmit={handleImageSubmit}>
-          <label htmlFor="imageFile">Add accommodation image</label>
+          <label htmlFor="imageFile">Add accommodation image(s)</label>
           <input type="file" onChange={(e)=>setFiles(e.target.files)} multiple/>
           <div className='image-form__image-display'></div>
           <button>Add Image</button>

@@ -1,6 +1,5 @@
 import Layout from '../components/Layout';
 import Head from '../components/Head';
-import Dropdown from '../components/Dropdown';
 import SearchForm from '../components/SearchForm';
 import dateDefault from '../utils/dateDefault';
 import { useEffect, useState } from 'react';
@@ -22,7 +21,7 @@ export default function Home(props) {
         <div className='hero'>
           <div className='introduction'>
             <p>Fjordside? Hillside? City centre? Find accommodation 
-            in and around Bergen on Norway's stunning west coast. </p>
+            in and around Bergen on Norway&apos;s stunning west coast. </p>
           </div>
           <SearchForm list={props} />
         </div>

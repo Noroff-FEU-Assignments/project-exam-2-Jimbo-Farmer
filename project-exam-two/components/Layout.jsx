@@ -1,17 +1,20 @@
 import Link from 'next/link';
 import {useRouter} from 'next/router';
-import { useEffect } from 'react';
+import { useState } from 'react';
 
 export default function Layout({children, pageId}) {
   const router = useRouter();
-  hamburger();
+  const [open, setOpen] = useState(false);
+  function hamburger(){
+    setOpen(!open);
+  };
   return(
     <div id={pageId}>
       <header>
         <Link href="/">
           <a id='page-title'>Holidaze</a>
         </Link>
-        <nav>
+        <nav className={open ? ('show') : ('')}>
           <Link href="/accommodation">
             <a className={router.pathname === "/accommodation" ? "nav__link nav__link-active" : "nav__link"}>Accommodation</a>
           </Link>
@@ -31,7 +34,7 @@ export default function Layout({children, pageId}) {
             <a className='hide'></a>
           </Link>
         </nav>
-        <div id="hamburger">
+        <div onClick={hamburger} id="hamburger" className={open ? ('open') : ('')}>
           <div className="burger__layer burger__top"></div>
           <div className="burger__layer burger__middle1"></div>
           <div className="burger__layer burger__middle2"></div>
@@ -43,15 +46,4 @@ export default function Layout({children, pageId}) {
   )
 }
 
-
-function hamburger(){
-  useEffect(()=> {
-    const hamburger = document.querySelector('#hamburger');
-    const nav = document.querySelector('nav');
-    hamburger.onclick = function(){
-      hamburger.classList.toggle("open");
-      nav.classList.toggle("show");
-    }
-  })
-}
 
