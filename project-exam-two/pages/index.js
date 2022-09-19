@@ -8,7 +8,6 @@ import axios from "axios";
 
 
 export default function Home(props) {
-  console.log(props);
   dateDefault();
   useEffect(()=> {
     console.log(document.querySelector("#checkin").value.split("-"));

@@ -33,7 +33,7 @@ export default function SearchForm({list}) {
       </div>
       <div className='search__accommodation'>
         <label htmlFor="accommodation-search">Search</label>
-        <input onKeyUp={handleChange} type="text" name="accommodation-search" id="accommodation-search" />
+        <input onChange={handleChange} type="text" name="accommodation-search" id="accommodation-search" />
         <button onClick={handleSearchClick}>Go</button> 
         <Dropdown filteredList={filteredList} input={input} />        
       </div>

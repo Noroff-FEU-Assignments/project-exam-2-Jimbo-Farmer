@@ -27,7 +27,7 @@ nav {
     position: relative;
     top: 20px;
     left: auto;
-    right: auto;
+    right: 10%;
     width: unset;
     text-align: right;
     background-color: transparent;
@@ -58,6 +58,7 @@ a {
   z-index: 3;
   @media (min-width: 1024px){
     font-size: 2.2rem;
+    left: 10%;
   }
 }
 

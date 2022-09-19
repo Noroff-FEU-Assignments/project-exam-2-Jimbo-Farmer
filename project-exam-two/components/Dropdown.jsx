@@ -28,7 +28,9 @@ export default function Dropdown({filteredList, input}) {
                     <Link href={`accommodation/${accomm.id}`}>
                       <a className="dropdown__item" key={accomm.id}>
                         <h3>{accomm.attributes.name}</h3>
-                        <Image src={accomm.attributes.images.data[0].attributes.formats.thumbnail.url} alt={accomm.attributes.name} width={200} height={200}/> 
+                        <div className="dropdown__image-container">
+                          <Image className="dropdown__image" src={accomm.attributes.images.data[0].attributes.formats.thumbnail.url} alt={accomm.attributes.name} width={50} height={50}/> 
+                        </div>
                       </a>
                     </Link>
                   </li>

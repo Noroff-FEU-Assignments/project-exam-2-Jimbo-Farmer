@@ -8,45 +8,43 @@
 .hero {
   position: relative;
   width: 100%;
-  @media (min-width: 1024px) {
-    top: -60px;
-  }
   top: 0;
-  background-image: url("../../public/images/hero.jpg");
+  //darken top of image to make white text contrast higher. 
+  background: linear-gradient( rgba(0, 0, 100, 0.4), rgba(0, 0, 100, 0.3) 18%, rgba(0, 0, 100, 0.1) 28%, rgba(0, 0, 100, 0)), url('../../public/images/hero-wide.jpg');
   background-repeat: no-repeat;
   background-position: top;
   background-size: cover;
   min-height: 600px;
   padding-top: 10px;
+  @media (min-width: 800px) {
+    min-height: 800px;
+    background-position: center;
+  }
+  @media (min-width: 1024px) {
+    top: -60px;
+  }
 }
 
 .introduction {
   color: white;
-  padding: 5%;
+  padding: 20px 5%;
   text-align: center;
   margin: 2rem auto 0 auto;
   max-width: 400px;
-
-}
-
-form {
-  input, textarea, label, .form__error {
-    display: block;
-    width: 80%;
-    max-width: 400px;
-    margin: 0 auto;
-    box-sizing: border-box;
-  }
-  input, textarea {
-    margin-bottom: 10px;
-    
+  // font-size: 1rem;
+  @media (min-width: 1024px) {
+    max-width: 600px;
+    margin-top: 3rem;
+    p {
+      font-size: 1.3125rem;
+    }
   }
 }
 
 .search {
   border: none;
   z-index: 1;
-  padding: 5%;
+  padding: 20px 5%;
   input, label {
     display: unset;
     width: unset;
@@ -98,6 +96,15 @@ form {
       color: black;
     }
   }
+  @media (min-width: 1300px) {
+    max-width: 900px;
+    display: flex;
+    
+    .search__checkin, .search__checkout {
+      width: 230px;
+      margin-right: 20px;
+    }    
+  }
 }
 
 .dropdown {
@@ -125,7 +132,14 @@ form {
     }
     
   }
-  img {
+  .dropdown__image-container {
+    float: right;
+    border-radius: 0 5px 5px 0;
+    height: 50px;
+    width: 50px;
+    margin: 0;
+  }
+  .dropdown__image {
     float: right;
     border-radius: 0 5px 5px 0;
     height: 50px;
