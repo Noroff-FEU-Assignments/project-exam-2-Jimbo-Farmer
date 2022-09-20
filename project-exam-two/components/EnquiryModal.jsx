@@ -1,6 +1,4 @@
 import axios from 'axios';
-import Head from '../components/Head';
-import Layout from '../components/Layout';
 import {useForm} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -24,7 +22,8 @@ export default function EnquiryModal({accommName, onClose, show}){
   if(show){
     modalVisibility = "";
   }
-  const [loginError, setLoginError] = useState(null);
+  const [success, setSuccess] = useState(null);
+  const [sendError, setSendError] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const {register, handleSubmit, formState: {errors}} = useForm({
     resolver: yupResolver(schema),
@@ -32,25 +31,60 @@ export default function EnquiryModal({accommName, onClose, show}){
 
   async function onSubmit(data){
     setSubmitting(true);
-    setLoginError(null);
+    setSendError(null);
+    setSuccess(null);
 
     try {
       const response = await axios.post(ENQUIRY_URL, {"data": data});
-      console.log(response);
+
     } catch (error) {
+      setSendError(true);
       console.log(error);
     } finally {
       setSubmitting(false);
     }
+  }
 
-    console.log(data);
+  if(submitting){
+    return (
+      <div id='enquiry-modal__container' className={modalVisibility}>
+        <button className='close-button' type='button' onClick={onClose}>Close</button>
+        <div className='enquiry-intro page-intro'>
+          <h1>Enquiry</h1>
+          <p>Your enquiry form is being submitted.</p>
+        </div>
+      </div>
+    )
+  }
 
+  if(success){
+    return (
+      <div id='enquiry-modal__container' className={modalVisibility}>
+        <button className='close-button' type='button' onClick={onClose}>Close</button>
+        <div className='enquiry-intro page-intro'>
+          <h1>Enquiry</h1>
+          <p>Your enquiry form has been successfully sent.</p>
+        </div>
+      </div>
+    )
+  }
+
+  if(sendError){
+    return (
+      <div id='enquiry-modal__container' className={modalVisibility}>
+        <button className='close-button' type='button' onClick={onClose}>Close</button>
+        <div className='enquiry-intro page-intro'>
+          <h1>Enquiry</h1>
+          <p>Apologies, an error has occurred.</p>
+        </div>
+      </div>
+    )
   }
 
   return(  
     <div id='enquiry-modal__container' className={modalVisibility}>
       <button className='close-button' type='button' onClick={onClose}>Close</button>
-      <div className='enquiry-intro'>
+      <div className='enquiry-intro page-intro'>
         <h1>Enquiry</h1>
         <p>Please fill in the enquiry form below and the accommodation provider will get back to you as soon as possible.</p>
       </div>

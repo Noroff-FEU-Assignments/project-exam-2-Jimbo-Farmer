@@ -9,7 +9,7 @@ export default function Results() {
     <Layout pageId='results'>
       <Head title='Results' description="Find your perfect getaway on Norway's west coast"/>
       <div className='results__container main'>
-        <div className='results__intro'>
+        <div className='results__intro page-intro'>
           <h1>Results</h1>
           <p>Showing {resultsList.length} result(s) for &quot;{input}&quot;</p>
         </div>

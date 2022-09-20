@@ -9,7 +9,7 @@ export default function AllAccommodation(props) {
     <Layout pageId='all-accommodation-page'>
       <Head title='Accommodation' description='Browse through all accommodation on Holidaze - your gateway to the fjords'/>
       <div className='all-accommodation__container main'>
-        <div className='all-accommodation__intro'>
+        <div className='all-accommodation__intro page-intro'>
           <h1>Accommodation</h1>
           <p>Browse through everything we have to offer at Holidaze</p>
         </div>

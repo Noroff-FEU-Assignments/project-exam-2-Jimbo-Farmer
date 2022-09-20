@@ -9,7 +9,7 @@ export default function Dashboard() {
   }
   return(
     <>
-      <div className='dashboard-intro'>
+      <div className='dashboard-intro page-intro'>
         <h1>Dashboard</h1>
         <p>View messages, booking enquiries and create accommodation listings</p>
       </div>

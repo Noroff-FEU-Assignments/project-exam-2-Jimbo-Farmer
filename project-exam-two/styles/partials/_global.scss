@@ -9,7 +9,8 @@ body {
 
 header {
   height: 60px;
-  background-color: $trollsk-blue;
+  background-color: #303030;
+  background-color: #000088;
 }
 
 .main {
@@ -24,6 +25,12 @@ h1 {
 p {
   font-size: 16px;
   font-family: $font-copy;
+}
+
+.page-intro {
+  max-width: 1000px;
+  width: 90%;
+  margin: auto;
 }
 
 .hide {
@@ -43,5 +50,21 @@ p {
       cursor: pointer;
       background-color: darken($color: $trollsk-blue, $amount: 10%);
     }
+  }
+}
+
+@media (min-width: 1024px) {
+  .main {
+    padding: 20px 10%;
+  }
+  h1 {
+    font-size: 1.75rem;
+  }
+  .button-container button {
+    font-size: 1rem;
+    padding: 6px 25px;
+  }
+  .page-intro {
+    width: 80%;
   }
 }

@@ -1,9 +1,10 @@
 #enquiry-modal__container {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 60px;
   z-index: 10;
-  padding: 20px;
-  background-color: $star-sky;
+  padding: 20px 0;
+  height: 100vh;
+  background-color: $trollsk-blue;
   color: white;
   .close-button {
     position: absolute;
@@ -37,4 +38,11 @@
 #enquiry-form {
   background-color: white;
   color: black;
+}
+
+@media (min-width: 1024px){
+  #enquiry-modal__container {
+    width: 82%;
+    left: 9%;
+  }
 }

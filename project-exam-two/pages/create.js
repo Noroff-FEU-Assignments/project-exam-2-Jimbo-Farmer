@@ -87,7 +87,7 @@ export default function CreateAccommodation(){
       <Layout pageId="create-page">
         <Head title='Create' description="Create a new accommodation listing."/>
         <div id='create-page__container' className='main'>
-          <div className='create-intro'>
+          <div className='create-intro page-intro'>
             <Link href='/login'><a className='dashboard-link'>Back to Dashboard</a></Link>
             <h1>Create New Listing</h1>
             <p>Create a new accommodation listing using the form below</p>
@@ -103,7 +103,7 @@ export default function CreateAccommodation(){
       <Layout pageId="create-page">
         <Head title='Create' description="Create a new accommodation listing."/>
         <div id='create-page__container' className='main'>
-          <div className='create-intro'>
+          <div className='create-intro page-intro'>
             <Link href='/login'><a className='dashboard-link'>Back to Dashboard</a></Link>
             <h1>Create New Listing</h1>
             <p>Create a new accommodation listing using the form below</p>
@@ -120,7 +120,7 @@ export default function CreateAccommodation(){
       <Layout pageId="create-page">
         <Head title='Create' description="Create a new accommodation listing."/>
         <div id='create-page__container' className='main'>
-          <div className='create-intro'>
+          <div className='create-intro page-intro'>
             <Link href='/login'><a className='dashboard-link'>Back to Dashboard</a></Link>
             <h1>Create New Listing</h1>
             <p>Create a new accommodation listing using the form below</p>
@@ -136,7 +136,7 @@ export default function CreateAccommodation(){
     <Layout pageId="create-page">
       <Head title='Create' description="Create a new accommodation listing."/>
       <div id='create-page__container' className='main'>
-        <div className='create-intro'>
+        <div className='create-intro page-intro'>
           <Link href='/login'><a className='dashboard-link'>Back to Dashboard</a></Link>
           <h1>Create New Listing</h1>
           <p>Create a new accommodation listing using the form below</p>

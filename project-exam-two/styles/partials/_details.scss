@@ -1,5 +1,12 @@
 .details {
-  padding: 20px 10%;
+  width: 80%;
+  max-width: 1000px;
+  margin: 20px auto;
+  border: 2px solid black;
+  border-radius: 5px;
+  h1{
+    text-align: center;
+  }
 }
 
 .details__image-container {
@@ -8,5 +15,38 @@
 
 .details__thumbnail-container {
   width: 80px; 
+  padding: 5px;
 }
 
+.details__description {
+  padding: 5px 10px;
+}
+
+.details__price {
+  padding: 5px 10px;
+}
+
+.details__button-container {
+  margin-bottom: 20px;
+}
+
+@media (min-width: 600px) {
+  .details__flex-container {
+    display: flex;
+  }
+  .details__images {
+    flex: 1;
+  }
+  .details__info {
+    flex: 1;
+  }
+  .details__description {
+    p {
+      margin-top: 0;
+    }
+  }
+  .details__image-container {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}

@@ -35,7 +35,7 @@ export default function Enquiries() {
       <Layout pageId='enquirys-page'>
         <Head title='Enquirys' description='View contact forms'/>
         <div className='enquirys__container main'>
-          <div className='enquirys__intro'>
+          <div className='enquirys__intro page-intro'>
             <Link href='/login'><a className='dashboard-link'>Back to Dashboard</a></Link>
             <h1>Enquiries</h1>
             <p>No enquiries</p>
@@ -49,7 +49,7 @@ export default function Enquiries() {
     <Layout pageId='enquirys-page'>
       <Head title='Enquirys' description='View contact forms'/>
       <div className='enquirys__container main'>
-        <div className='enquirys__intro'>
+        <div className='enquirys__intro page-intro'>
           <Link href='/login'><a className='dashboard-link'>Back to Dashboard</a></Link>
           <h1>Enquiries</h1>
           <p>View, sort and filter booking enquiries.</p>

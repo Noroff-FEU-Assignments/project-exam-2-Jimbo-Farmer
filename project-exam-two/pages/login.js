@@ -57,7 +57,7 @@ export default function Login(){
     <Layout pageId="login-page">
       <Head title='Administration' description="Read messages and create accommodation listings from the dashboard."/>
       <div id='login-page__container' className='main'>
-        <div className='login-intro'>
+        <div className='login-intro page-intro'>
           <h1>Administrator Login</h1>
           <p>Please log in to continue</p>
         </div>
@@ -82,7 +82,7 @@ export default function Login(){
     <Layout pageId="login-page">
       <Head title='Administration' description="Read messages and create accommodation listings from the dashboard."/>
       <div id='login-page__container' className='main'>
-        <div className='login-intro'>
+        <div className='login-intro page-intro'>
           <h1>Administrator Login</h1>
           <p>Please log in to continue</p>
         </div>
@@ -95,7 +95,7 @@ export default function Login(){
     <Layout pageId="login-page">
       <Head title='Administration' description="Read messages and create accommodation listings from the dashboard."/>
         <div id='login-page__container' className='main'>
-          <div className='login-intro'>
+          <div className='login-intro page-intro'>
           <h1>Administrator Login</h1>
           <p>Please log in to continue</p>
         </div>

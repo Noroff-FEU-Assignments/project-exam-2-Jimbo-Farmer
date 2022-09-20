@@ -20,14 +20,20 @@ export default function Details({acc}) {
     <>
       <div className="details">
         <h1>{acc.data.attributes.name}</h1>
-        <div className="details__image-container">
-          <Image src={acc.data.attributes.images.data[0].attributes.url} alt={acc.data.attributes.images.data[0].attributes.alternativeText} width={800} height={800}/>
-        </div>
-        <div className="details__thumbnails">{thumbnailDivs}</div>
-        <div className="details__description"><p>{acc.data.attributes.description}</p></div>
-        <div className="details__price">Price per night: {acc.data.attributes.price} Norwegian Kroner</div>
-        <div className="details__button-container button-container">
-          <button className="details__enquiry-link" onClick={openEnquiryModal}>Send Enquiry</button>
+        <div className="details__flex-container">
+          <div className="details__images">
+            <div className="details__image-container">
+              <Image src={acc.data.attributes.images.data[0].attributes.url} alt={acc.data.attributes.images.data[0].attributes.alternativeText} width={800} height={800}/>
+            </div>
+            <div className="details__thumbnails">{thumbnailDivs}</div>
+          </div>
+          <div className="details__info">
+            <div className="details__description"><p>{acc.data.attributes.description}</p></div>
+            <div className="details__price">Price per night: {acc.data.attributes.price} Norwegian Kroner</div>
+            <div className="details__button-container button-container">
+              <button className="details__enquiry-link" onClick={openEnquiryModal}>Send Enquiry</button>
+            </div>
+          </div>
         </div>
       </div>
       <EnquiryModal onClose={() => setShowModal(false)} accommName={acc.data.attributes.name} show={showModal}/>

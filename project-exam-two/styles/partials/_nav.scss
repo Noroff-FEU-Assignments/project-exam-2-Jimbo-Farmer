@@ -20,8 +20,9 @@ nav {
     font-family: $font-header;
     margin: 30px 80px;
     padding: 20px 0;
-    border: 2px solid $sunshine-yellow;
-    border-radius: 5px;
+    border-bottom: 1px solid $sunshine-yellow;
+    border-color: orange;
+    // border-radius: 5px;
   }
   @media (min-width: 1024px) {
     position: relative;
@@ -34,7 +35,7 @@ nav {
     height: 60px;
     a {
       display: inline;
-      padding: 7px 10px;
+      padding: 2px 0px;
       margin: 10px;
     }
   }

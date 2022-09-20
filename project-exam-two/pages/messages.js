@@ -35,7 +35,7 @@ export default function Messages() {
       <Layout pageId='messages-page'>
         <Head title='Messages' description='View contact forms'/>
         <div className='messages__container main'>
-          <div className='messages__intro'>
+          <div className='messages__intro page-intro'>
             <Link href='/login'><a className='dashboard-link'>Back to Dashboard</a></Link>
             <h1>Messages</h1>
             <p>No messages</p>
@@ -48,7 +48,7 @@ export default function Messages() {
     <Layout pageId='messages-page'>
       <Head title='Messages' description='View contact forms'/>
       <div className='messages__container main'>
-        <div className='messages__intro'>
+        <div className='messages__intro page-intro'>
           <Link href='/login'><a className='dashboard-link'>Back to Dashboard</a></Link>
           <h1>Messages</h1>
           <p>View, sort and filter messages received via the Holidaze contact form.</p>
