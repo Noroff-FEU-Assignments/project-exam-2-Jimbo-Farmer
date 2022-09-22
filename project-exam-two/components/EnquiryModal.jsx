@@ -4,6 +4,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState } from 'react';
 import { ENQUIRY_URL } from '../constants/enquiriesUrl';
+import Link from 'next/link';
 
 const schema = yup.object().shape({
   accommodationname: yup.string(),
@@ -18,6 +19,7 @@ const schema = yup.object().shape({
 })
 
 export default function EnquiryModal({accommName, onClose, show}){
+  console.log('modal refresh');
   let modalVisibility = "hide";
   if(show){
     modalVisibility = "";
@@ -36,7 +38,9 @@ export default function EnquiryModal({accommName, onClose, show}){
 
     try {
       const response = await axios.post(ENQUIRY_URL, {"data": data});
-
+      if(response.statusText === "OK"){
+        setSuccess(true);
+      }
     } catch (error) {
       setSendError(true);
       console.log(error);
@@ -51,10 +55,11 @@ export default function EnquiryModal({accommName, onClose, show}){
         <button className='close-button' type='button' onClick={onClose}>Close</button>
         <div className='enquiry-intro page-intro'>
           <h1>Enquiry</h1>
-          <p>Your enquiry form is being submitted.</p>
+          <p>Your enquiry form is being submitted. <div className='loading'></div></p>
         </div>
       </div>
     )
+    
   }
 
   if(success){
@@ -64,6 +69,7 @@ export default function EnquiryModal({accommName, onClose, show}){
         <div className='enquiry-intro page-intro'>
           <h1>Enquiry</h1>
           <p>Your enquiry form has been successfully sent.</p>
+          <Link href='/'><a className='enquiry__link-to-home'>&lt;&lt; Back to Hompage</a></Link>
         </div>
       </div>
     )

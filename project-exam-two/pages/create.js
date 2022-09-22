@@ -20,11 +20,7 @@ export default function CreateAccommodation(){
   //Check for Auth and redirect if necessary
   const [auth, setAuth] = useContext(AuthContext);
   const router = useRouter();
-  useEffect(()=>{
-    if(!auth){
-      router.push('/login');
-    }
-  });
+  useEffect(()=>{ !auth ? router.push('/login') : ""});
 
   const [imageId, setImageId] = useState([20]);   // 20 is the current ID of the placeholder image stored on strapi. 
   const [sendError, setSendError] = useState(null);
@@ -92,7 +88,7 @@ export default function CreateAccommodation(){
             <h1>Create New Listing</h1>
             <p>Create a new accommodation listing using the form below</p>
           </div>
-          <div>Creating...</div>
+          <div>Creating...</div><div className='loading'></div>
         </div>
       </Layout>
     )
@@ -139,13 +135,15 @@ export default function CreateAccommodation(){
         <div className='create-intro page-intro'>
           <Link href='/login'><a className='dashboard-link'>Back to Dashboard</a></Link>
           <h1>Create New Listing</h1>
-          <p>Create a new accommodation listing using the form below</p>
+          <p>Create a new accommodation listing using the form below. Add images first, then submit the rest of the details.</p>
         </div>
         <form id='image-form' onSubmit={handleImageSubmit}>
           <label htmlFor="imageFile">Add accommodation image(s)</label>
           <input type="file" onChange={(e)=>setFiles(e.target.files)} multiple/>
           <div className='image-form__image-display'></div>
-          <button>Add Image</button>
+          <div className='create-form__button-container button-container'>
+            <button>Add Image(s)</button>
+          </div>
         </form>
         <form id='create-form' onSubmit={handleSubmit(onSubmit)}>
           <div className='create-form__item'>

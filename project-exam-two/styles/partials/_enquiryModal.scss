@@ -4,7 +4,7 @@
   z-index: 10;
   padding: 20px 0;
   height: 100vh;
-  background-color: $trollsk-blue;
+  background-color: #303030;
   color: white;
   .close-button {
     position: absolute;
@@ -33,6 +33,11 @@
 }
 .enquiry-form__checkout {
   margin-right: 10%;
+}
+
+.enquiry__link-to-home {
+  text-decoration: underline;
+  text-transform: none;
 }
 
 #enquiry-form {

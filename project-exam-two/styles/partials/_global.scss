@@ -10,7 +10,10 @@ body {
 header {
   height: 60px;
   background-color: #303030;
-  background-color: #000088;
+  background-color: #072f7e;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .main {
@@ -53,6 +56,21 @@ p {
   }
 }
 
+.loading {
+  margin: 20px;
+  height: 20px;
+  width: 20px;
+  border: 10px solid $trollsk-blue;
+  border-radius: 50%;
+  border-bottom-color: $star-sky;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {transform: rotate(0deg);}
+  to {transform: rotate(360deg);}
+}
+
 @media (min-width: 1024px) {
   .main {
     padding: 20px 10%;
@@ -66,5 +84,8 @@ p {
   }
   .page-intro {
     width: 80%;
+  }
+  button {
+    font-size: 1rem;
   }
 }

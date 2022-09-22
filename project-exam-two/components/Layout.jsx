@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import {useRouter} from 'next/router';
 import { useState } from 'react';
+import Footer from './Footer';
 
 export default function Layout({children, pageId}) {
   const router = useRouter();
@@ -42,6 +43,7 @@ export default function Layout({children, pageId}) {
         </div>
       </header>
       <div className='page-container'>{children}</div>
+      <Footer />
     </div>
   )
 }

@@ -1,7 +1,6 @@
 import { useEffect, useContext } from 'react';
 import axios from 'axios';
-import Head from '../components/Head';
-import Layout from '../components/Layout';
+import LoginLayout from '../components/LoginLayout';
 import Dashboard from '../components/Dashboard';
 import {useForm} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -54,67 +53,39 @@ export default function Login(){
 
   if(submitting){
     return (
-    <Layout pageId="login-page">
-      <Head title='Administration' description="Read messages and create accommodation listings from the dashboard."/>
-      <div id='login-page__container' className='main'>
-        <div className='login-intro page-intro'>
-          <h1>Administrator Login</h1>
-          <p>Please log in to continue</p>
-        </div>
-        <div>Logging in...</div><div className='loading'></div>
-      </div>
-    </Layout>
+      <LoginLayout><div className='form-feedback'>Logging in...<div className='loading'></div></div></LoginLayout>
+    )
+  }
+
+  if(sendError){
+    return (
+      <LoginLayout><div className='form-feedback'><div>{sendError}</div></div></LoginLayout>
     )
   }
 
   if(success){
     return (
-      <Layout pageId="login-page">
-        <Head title='Administration' description="Read messages and create accommodation listings from the dashboard."/>
-        <div id='login-page__container' className='main'>
-          <Dashboard />
-        </div>
-      </Layout>
+      <Dashboard />  
     )
   }
-
-  if(sendError){
-    <Layout pageId="login-page">
-      <Head title='Administration' description="Read messages and create accommodation listings from the dashboard."/>
-      <div id='login-page__container' className='main'>
-        <div className='login-intro page-intro'>
-          <h1>Administrator Login</h1>
-          <p>Please log in to continue</p>
-        </div>
-        <div>{sendError}</div>
-      </div>
-    </Layout>
-  }
-
+  
   return(
-    <Layout pageId="login-page">
-      <Head title='Administration' description="Read messages and create accommodation listings from the dashboard."/>
-        <div id='login-page__container' className='main'>
-          <div className='login-intro page-intro'>
-          <h1>Administrator Login</h1>
-          <p>Please log in to continue</p>
+    <LoginLayout>
+      <form id='login-form' onSubmit={handleSubmit(onSubmit)}>
+        <div className='login-form__item'>
+          <label htmlFor='identifier'>Email</label>
+          <input {...register("identifier")} />
+          {errors.identifier && <span className='form__error login-form__error'>{errors.identifier.message}</span>}
         </div>
-        <form id='login-form' onSubmit={handleSubmit(onSubmit)}>
-          <div className='login-form__item'>
-            <label htmlFor='identifier'>Email</label>
-            <input {...register("identifier")} />
-            {errors.identifier && <span className='form__error login-form__error'>{errors.identifier.message}</span>}
-          </div>
-          <div className='login-form__item'>
-            <label htmlFor='password'>Password</label>
-            <input {...register("password")} type="password"/>
-            {errors.password && <span className='form__error login-form__error'>{errors.password.message}</span>}
-          </div>
-          <div className='login-form__button-container button-container'>
-            <button>Send</button>
-          </div> 
-        </form>
-      </div>
-    </Layout>
+        <div className='login-form__item'>
+          <label htmlFor='password'>Password</label>
+          <input {...register("password")} type="password"/>
+          {errors.password && <span className='form__error login-form__error'>{errors.password.message}</span>}
+        </div>
+        <div className='login-form__button-container button-container'>
+          <button>Send</button>
+        </div> 
+      </form>
+    </LoginLayout>
   )
 }

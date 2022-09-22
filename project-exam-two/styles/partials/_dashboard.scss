@@ -1,11 +1,11 @@
 .dashboard__link {
   border: 1px solid black;
   border-radius: 5px;
-  
+  max-width: 450px;
   margin: 15px auto;
   text-align: center;
   &:hover {
-    background-color: $sunshine-yellow;
+    background-color: #F0F0F0;
   }
   a {
     padding: 10px;

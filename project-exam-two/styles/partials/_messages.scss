@@ -1,6 +1,7 @@
 .message-card, .enquiry-card {
   border: 1px solid black;
   border-radius: 5px;
+  max-width: 1000px;
   margin: 20px auto;
   padding: 10px;
   h2 {
@@ -16,4 +17,7 @@
   text-decoration: underline;
   position: absolute;
   right: 5%;
+  @media (min-width: 1024px) {
+    right: 10%;
+  }
 }

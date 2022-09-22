@@ -26,3 +26,18 @@ form {
   text-transform: none;
   color: $star-sky;
 }
+
+#image-form {
+  border-bottom: none;
+  border-radius: 5px 5px 0 0;
+}
+
+#create-form {
+  border-top: none;
+  border-radius: 0 0 5px 5px;
+}
+
+.form-feedback {
+  max-width: 450px;
+  margin: 0 auto;
+}

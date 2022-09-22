@@ -1,6 +1,5 @@
 import axios from 'axios';
-import Head from '../components/Head';
-import Layout from '../components/Layout';
+import ContactLayout from '../components/ContactLayout';
 import Link from 'next/link';
 import {useForm} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -41,83 +40,49 @@ export default function Contact(){
 
   if(submitting){
     return (
-      <Layout pageId="contact-page">
-        <Head title='Contact' description="Any questions? Take contact and someone from the Holidaze team will get back to you with help and advice."/>
-        <div id='contact-page__container' className='main'>
-          <div className='contact-intro page-intro'>
-            <h1>Contact us</h1>
-            <p>Got a query? Wondering where to stay or what to do? Don&apos;t hesitate to get in touch!</p>
-          </div>
-          <div>Sending...</div>
-        </div>
-      </Layout>
+      <ContactLayout><div className='form-feedback'>Sending...<div className='loading'></div></div></ContactLayout>
+    )
+  }
+
+  if(sendError){
+    return (
+      <ContactLayout><div className='form-feedback'>{sendError}</div></ContactLayout>
     )
   }
 
   if(success){
     return (
-      <Layout pageId="contact-page">
-        <Head title='Contact' description="Any questions? Take contact and someone from the Holidaze team will get back to you with help and advice."/>
-        <div id='contact-page__container' className='main'>
-          <div className='contact-intro page-intro'>
-            <h1>Contact us</h1>
-            <p>Got a query? Wondering where to stay or what to do? Don&apos;t hesitate to get in touch! </p>
-          </div>
+      <ContactLayout>
+        <div className='form-feedback'>
           <div>Your message has been received!</div>
-          <Link href="/">
-            <a className='contact-page__home-link'>Return to homepage</a>
-          </Link>
-          
+          <Link href="/"><a className='contact-page__home-link'>Return to homepage</a></Link>
         </div>
-      </Layout>
+      </ContactLayout>
       )
   }
 
-  if(sendError){
-    return (
-      <Layout pageId="contact-page">
-        <Head title='Contact' description="Any questions? Take contact and someone from the Holidaze team will get back to you with help and advice."/>
-        <div id='contact-page__container' className='main'>
-          <div className='contact-intro page-intro'>
-            <h1>Contact us</h1>
-            <p>Got a query? Wondering where to stay or what to do? Don&apos;t hesitate to get in touch! </p>
-          </div>
-          <div>{sendError}</div>
-        </div>
-      </Layout>
-    )
-    
-  }
-
   return(
-    <Layout pageId="contact-page">
-      <Head title='Contact' description="Any questions? Take contact and someone from the Holidaze team will get back to you with help and advice."/>
-      <div id='contact-page__container' className='main'>
-        <div className='contact-intro page-intro'>
-          <h1>Contact us</h1>
-          <p>Got a query? Wondering where to stay or what to do? Don&apos;t hesitate to get in touch! </p>
+    <ContactLayout>
+      <form id='contact-form' onSubmit={handleSubmit(onSubmit)}>
+        <div className='contact-form__item'>
+          <label htmlFor='name'>Name</label>
+          <input {...register("name")} />
+          {errors.name && <span className='form__error contact-form__error'>{errors.name.message}</span>}
         </div>
-        <form id='contact-form' onSubmit={handleSubmit(onSubmit)}>
-          <div className='contact-form__item'>
-            <label htmlFor='name'>Name</label>
-            <input {...register("name")} />
-            {errors.name && <span className='form__error contact-form__error'>{errors.name.message}</span>}
-          </div>
-          <div className='contact-form__item'>
-            <label htmlFor='email'>Email</label>
-            <input {...register("email")} />
-            {errors.email && <span className='form__error contact-form__error'>{errors.email.message}</span>}
-          </div>
-          <div className='contact-form__item'>
-            <label htmlFor='messagecontent'>Message</label>
-            <textarea {...register("messagecontent")} rows="5"/>
-            {errors.messagecontent && <span className='form__error contact-form__error'>{errors.messagecontent.message}</span>}
-          </div>
-          <div className='contact-form__button-container button-container'>
-            <button>Send</button>
-          </div> 
-        </form>
-      </div>
-    </Layout>
+        <div className='contact-form__item'>
+          <label htmlFor='email'>Email</label>
+          <input {...register("email")} />
+          {errors.email && <span className='form__error contact-form__error'>{errors.email.message}</span>}
+        </div>
+        <div className='contact-form__item'>
+          <label htmlFor='messagecontent'>Message</label>
+          <textarea {...register("messagecontent")} rows="5"/>
+          {errors.messagecontent && <span className='form__error contact-form__error'>{errors.messagecontent.message}</span>}
+        </div>
+        <div className='contact-form__button-container button-container'>
+          <button>Send</button>
+        </div> 
+      </form>
+    </ContactLayout> 
   )
 }

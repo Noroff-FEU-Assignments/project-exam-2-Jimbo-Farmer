@@ -51,7 +51,7 @@ export default function Messages() {
         <div className='messages__intro page-intro'>
           <Link href='/login'><a className='dashboard-link'>Back to Dashboard</a></Link>
           <h1>Messages</h1>
-          <p>View, sort and filter messages received via the Holidaze contact form.</p>
+          <p>View messages received via the Holidaze contact form.</p>
         </div>
         {messageList.map((message)=>{
           return <MessageCard key={message.id} name={message.attributes.name} email={message.attributes.email} content={message.attributes.messagecontent} /> 

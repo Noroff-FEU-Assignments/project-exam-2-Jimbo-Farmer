@@ -1,0 +1,60 @@
+.footer {
+  margin-top: 50px;
+  
+  a {
+    color: black;
+  }
+  p {
+    margin: 5px;
+    font-size: 0.8rem;
+    text-align: center;
+  }
+  hr {
+    width: 60%;
+  }
+  @media (min-width: 1024px) {
+    text-align: center;
+    hr, br {
+      display: none;
+    }
+    p {
+      font-size: 1rem;
+      display: inline-block;
+      margin: 10px 20px;
+    }
+  }
+}
+
+.footer__link{
+  a {
+    text-transform: none;
+    text-decoration: underline;
+    display: inline;
+  }
+}
+
+.footer__banner-container{
+  background-image: url('../../public/images/footer-banner.jpg');
+  background-size: cover;
+  background-position: center;
+  height: 150px;
+  position: relative;
+  border-top: 2px solid $star-sky;
+  .attribute {
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
+    color: white;
+    border-radius: 2px;
+    font-size: 0.7rem;
+    a {
+      color: white;
+      text-transform: none;
+      display: inline;  
+    }
+  }
+  @media (min-width: 1024px) {
+    height: 250px;
+  }
+}
+

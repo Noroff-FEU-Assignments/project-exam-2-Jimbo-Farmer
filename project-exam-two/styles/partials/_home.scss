@@ -1,7 +1,11 @@
 #homepage {
   header {
-    background-color: transparent;
+    transition: all 0.3s linear;
+    background-color: rgba($color: $star-sky, $alpha: 0.0);
     height: unset;
+  }
+  .scrolled {
+    background-color: rgba($color: $star-sky, $alpha: 1.0);
   }
 }
 
@@ -18,7 +22,6 @@
   padding-top: 10px;
   @media (min-width: 800px) {
     min-height: 800px;
-    background-position: center;
   }
   @media (min-width: 1024px) {
     top: -60px;
@@ -149,11 +152,72 @@
 }
 
 .gateway {
+  font-size: 1.3125rem;
   text-align: center;
-  padding: 0 5% 20px 5%;
-  margin-top: 0;
+
 }
 
+.gateway-block {
+  display: flex;
+  &:nth-of-type(2){
+    flex-direction: row-reverse;
+  }
+  max-width: 500px;
+  margin: 0 auto;
+  h2 {
+    font-size: 1.2rem;
+  }
+}
 
+.gateway-block__info {
+  flex: 1;
+  h2, p {
+    margin: 5px 10px;
+  } 
 
+}
+
+.gateway-block__image-container {
+  font-size: 0;
+  flex: 1;
+  position: relative;
+  .attribute {
+    position: absolute;
+    bottom: 3px;
+    right: 2px;
+    font-size: 0.7rem;
+    color: white;
+    a {
+      text-transform: none;
+      display: inline;
+    }
+  }
+}
+
+@media (min-width: 1024px) {
+  .gateway-block-container {
+    display: flex;
+    width: 80%;
+    margin: 20px auto;
+    justify-content: center;
+  }
+  .gateway-block__image-container {
+    img {
+      border-radius: 5px;
+    }
+  }
+  .gateway {
+    font-size: 1.75rem;
+  }
+  .gateway-block {
+    flex: 1;
+    display: inline-block;
+    margin: 10px;
+    max-width: 400px;
+    h2 {
+      font-size: 1.3125rem;
+      text-align: center;
+    }
+  }
+}
 
