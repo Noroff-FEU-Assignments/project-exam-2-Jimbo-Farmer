@@ -28,7 +28,7 @@ export default function Enquiries() {
         const response = await axios.get(ENQUIRY_URL, {headers: {Authorization:  `Bearer ${auth.data.jwt}`}} );
           setEnquiryList(response.data.data);
           if(document.querySelector("#nameSearch").value){                                                        //Check if list is being filtered and if so: generate new filtered list using same filter input. 
-            setFilteredList(filterEnquiries(enquiryList, document.querySelector("#nameSearch").value))
+            setFilteredList(filterEnquiries(enquiryList, document.querySelector("#nameSearch").value));
           } else {setFilteredList(response.data.data);}
       } catch (error) {
         console.log(error)
@@ -39,7 +39,7 @@ export default function Enquiries() {
 
   //Filter enquiries when filter input changes. 
   function handleChange(e){
-    setFilteredList(filterEnquiries(enquiryList, e.target.value));
+    setFilteredList(filterEnquiries(enquiryList, e.target.value.toLowerCase()));
     if(!e.target.value.length){
       setFilteredList(enquiryList);
     }
@@ -65,7 +65,7 @@ export default function Enquiries() {
           <div className='enquirys__intro page-intro'>
             <Link href='/login'><a className='dashboard-link'>Back to Dashboard</a></Link>
             <h1>Enquiries</h1>
-            <p>View, sort and filter booking enquiries.</p>
+            <p>View and filter booking enquiries.</p>
             <label htmlFor="nameSearch">Filter by accommodation name: </label>
             <input onChange={handleChange} name='nameSearch' id='nameSearch' />
             <p>No enquiries</p>
@@ -82,7 +82,7 @@ export default function Enquiries() {
         <div className='enquirys__intro page-intro'>
           <Link href='/login'><a className='dashboard-link'>Back to Dashboard</a></Link>
           <h1>Enquiries</h1>
-          <p>View, sort and filter booking enquiries.</p>
+          <p>View and filter booking enquiries.</p>
           <label htmlFor="nameSearch">Filter by accommodation name: </label>
           <input onChange={handleChange} name='nameSearch' id='nameSearch' />
         </div>

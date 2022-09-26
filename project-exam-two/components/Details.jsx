@@ -24,6 +24,7 @@ export default function Details({acc}) {
     }
   }
   function carouselRight(){
+    console.log('c-slide')
     if(currentImage < (noOfImages -1)){
       setCurrentImage(currentImage +1);
     }

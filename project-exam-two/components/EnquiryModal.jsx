@@ -19,7 +19,6 @@ const schema = yup.object().shape({
 })
 
 export default function EnquiryModal({accommName, onClose, show}){
-  console.log('modal refresh');
   let modalVisibility = "hide";
   if(show){
     modalVisibility = "";

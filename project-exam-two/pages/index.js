@@ -5,9 +5,7 @@ import GatewayBlock from '../components/GatewayBlock';
 import dateDefault from '../utils/dateDefault';
 import { useEffect } from 'react';
 import { BASE_URL } from "../constants/baseUrl";
-import Link from 'next/link';
 import axios from "axios";
-import Image from 'next/image';
 import homeimage1 from '../public/images/home-image-1.jpg';
 import homeimage2 from '../public/images/home-image-2.jpg';
 import homeimage3 from '../public/images/home-image-3.jpg';
@@ -19,12 +17,9 @@ export default function Home(props) {
     window.addEventListener('scroll', handleScroll);
   })
   function handleScroll(){
-    console.log('scrolling');
     const navbar = document.querySelector("header");
     window.scrollY ? navbar.classList.add('scrolled') : navbar.classList.remove('scrolled');
   }
-
-
   
   return(
     <Layout pageId='homepage'>

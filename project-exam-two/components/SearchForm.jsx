@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Dropdown from './Dropdown';
 import { useRouter } from 'next/router';
 
@@ -14,7 +14,7 @@ export default function SearchForm({list}) {
       setInput('');
     }
   }
-  
+
   function handleSearchClick(e){              //Use localstorage to store search terms and list of results to use on results page. 
     e.preventDefault();
     localStorage.setItem('ResultsList', JSON.stringify(filteredList));
@@ -44,7 +44,7 @@ export default function SearchForm({list}) {
 
 function searchDropdown(list, searchTerm){
   let output = list.filter(function(item){
-    if(item.attributes.name.toLowerCase().includes(searchTerm)){
+    if(item.attributes.name.toLowerCase().includes(searchTerm.toLowerCase())){
       return true;
     }
   })   

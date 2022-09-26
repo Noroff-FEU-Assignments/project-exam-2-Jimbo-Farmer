@@ -25,16 +25,22 @@ export default function CreateAccommodation(){
   const [imageId, setImageId] = useState([20]);   // 20 is the current ID of the placeholder image stored on strapi. 
   const [sendError, setSendError] = useState(null);
   const [submitting, setSubmitting] = useState(false);
+  const [imageSubmitting, setImageSubmitting] = useState(null);
   const [success, setSuccess] = useState(false);
   const {register, handleSubmit, formState: {errors}} = useForm({
     resolver: yupResolver(schema),
   });
+  const [feedback, setFeedback] = useState('');
 
   // Submit file form, retrieve image id from response and add it to main form. 
   const [files, setFiles] = useState();
 
   async function handleImageSubmit(e){
     e.preventDefault();
+    if(!files){
+      return
+    }
+    setImageSubmitting(true);
     const formData = new FormData();
     for(let i = 0; i < files.length; i++){    //Add all image files to be uploaded
       formData.append('files', files[i]);
@@ -42,9 +48,10 @@ export default function CreateAccommodation(){
     
     try {
       const response = await axios.post(BASE_URL+'api/upload', formData, {headers: {Authorization:  `Bearer ${auth.data.jwt}`}});
-      setSubmitting(true);
       if(response.statusText === "OK"){
+        setFeedback('Images uploaded successfully');
         console.log(response);
+        setImageSubmitting(null);
         let imageIdArray = [];
         for(let i = 0; i < response.data.length; i++){ // Get IDs of all newly uploaded image files and put in an array. 
           imageIdArray.push(response.data[i].id)
@@ -103,9 +110,11 @@ export default function CreateAccommodation(){
             <Link href='/login'><a className='dashboard-link'>Back to Dashboard</a></Link>
             <h1>Create New Listing</h1>
             <p>Create a new accommodation listing using the form below</p>
+            <p>New accommodation created successfully!</p>
+            <div className='button-container'>
+              <button onClick={()=>{setSuccess(false)}}>Add Another</button>
+            </div>
           </div>
-          <p>New accommodation created successfully!</p>
-          <button onClick={()=>{setSuccess(false)}}>Add Another</button>
         </div>
       </Layout>
     )
@@ -144,6 +153,8 @@ export default function CreateAccommodation(){
           <div className='create-form__button-container button-container'>
             <button>Add Image(s)</button>
           </div>
+          <div className={imageSubmitting ? 'loading' : ''}></div>
+          <div>{feedback}</div>
         </form>
         <form id='create-form' onSubmit={handleSubmit(onSubmit)}>
           <div className='create-form__item'>
