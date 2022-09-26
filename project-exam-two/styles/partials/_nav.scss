@@ -16,6 +16,9 @@ nav {
   z-index: 2;
   &.show {
     width: 100%;
+    a {
+      visibility: unset;
+    }
   }
   a {
     font-family: $font-header;
@@ -23,7 +26,7 @@ nav {
     padding: 20px 0;
     border-bottom: 1px solid $sunshine-yellow;
     border-color: orange;
-    // border-radius: 5px;
+    visibility: hidden;
   }
   @media (min-width: 1024px) {
     position: relative;
