@@ -12,13 +12,16 @@ export default function Messages() {
   const [auth, setAuth] = useContext(AuthContext);
   const [messageList, setMessageList] = useState([]);
   const router = useRouter();
+  const [update, setUpdate] = useState(false);
+  
   useEffect(()=>{
     if(!auth){
       router.push('/login');
     }
-  });
+  }, [auth]);
   
   useEffect(() => {
+    setInterval(()=>{setUpdate(!update)}, 30000);           //Update every 30 seconds with new messages.
     async function getMessages(){
       try {
         const response = await axios.get(CONTACT_URL, {headers: {Authorization:  `Bearer ${auth.data.jwt}`}} );
@@ -28,7 +31,7 @@ export default function Messages() {
       }
     }
     getMessages();
-  });
+  }, [update]);
   
   if(!messageList.length){
     return (

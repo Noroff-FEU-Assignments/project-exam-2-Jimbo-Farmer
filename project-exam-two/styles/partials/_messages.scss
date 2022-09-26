@@ -4,11 +4,16 @@
   max-width: 1000px;
   margin: 20px auto;
   padding: 10px;
+  box-sizing: border-box;
   h2 {
     margin: 3px auto;
     font-size: 21px;
     font-weight: 400;
   }
+}
+
+.messages__intro, .enquirys__intro {
+  width: unset;
 }
 
 .dashboard-link {
@@ -19,5 +24,6 @@
   right: 5%;
   @media (min-width: 1024px) {
     right: 10%;
+    padding: 10px;
   }
 }

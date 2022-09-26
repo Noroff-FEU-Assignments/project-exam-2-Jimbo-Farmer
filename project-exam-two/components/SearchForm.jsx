@@ -14,7 +14,8 @@ export default function SearchForm({list}) {
       setInput('');
     }
   }
-  function handleSearchClick(e){
+  
+  function handleSearchClick(e){              //Use localstorage to store search terms and list of results to use on results page. 
     e.preventDefault();
     localStorage.setItem('ResultsList', JSON.stringify(filteredList));
     localStorage.setItem('Input', JSON.stringify(input));
