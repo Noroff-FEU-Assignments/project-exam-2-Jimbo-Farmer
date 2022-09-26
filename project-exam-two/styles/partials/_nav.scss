@@ -6,7 +6,6 @@
 
 nav {
   position: absolute;
-  // top: 60px;
   padding-top: 40px;
   background-color: black;
   width: 0;
@@ -42,6 +41,7 @@ nav {
       display: inline;
       padding: 2px 0px;
       margin: 10px;
+      visibility: unset;
     }
   }
 }

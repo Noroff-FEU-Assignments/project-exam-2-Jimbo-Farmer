@@ -2,7 +2,7 @@
   header {
     transition: all 0.3s linear;
     background-color: rgba($color: $star-sky, $alpha: 0.0);
-    height: unset;
+    height: 60px;
   }
   .scrolled {
     background-color: rgba($color: $star-sky, $alpha: 1.0);
@@ -12,7 +12,7 @@
 .hero {
   position: relative;
   width: 100%;
-  top: 0;
+  top: -60px;
   //darken top of image to make white text contrast higher. 
   background: linear-gradient( rgba(0, 0, 100, 0.4), rgba(0, 0, 100, 0.3) 18%, rgba(0, 0, 100, 0.1) 28%, rgba(0, 0, 100, 0)), url('../../public/images/hero-wide.jpg');
   background-repeat: no-repeat;
@@ -23,9 +23,6 @@
   @media (min-width: 800px) {
     min-height: 800px;
   }
-  @media (min-width: 1024px) {
-    top: -60px;
-  }
 }
 
 .introduction {
@@ -34,7 +31,6 @@
   text-align: center;
   margin: 2rem auto 0 auto;
   max-width: 400px;
-  // font-size: 1rem;
   @media (min-width: 1024px) {
     max-width: 600px;
     margin-top: 3rem;
