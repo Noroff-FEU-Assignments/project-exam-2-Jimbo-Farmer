@@ -1,6 +1,12 @@
 import Link from "next/link";
 import Image from "next/image";
 
+/**
+ * Generates a card to display accommodation information.
+ * @param {object} acc - Data for this accommodation (obtained from the API) 
+ * @returns {void}
+ */
+
 export default function AccommCard({acc}) {
   return(
     <div className="accommodation-card">

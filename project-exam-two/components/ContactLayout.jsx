@@ -1,6 +1,12 @@
 import Layout from "./Layout";
 import Head from "./Head";
 
+/**
+ * Generates layout for contact page to make contact.js less repetitive
+ * @param {children} children - All additional page contents, depending on success/loading/error etc.  
+ * @returns {void}
+ */
+
 export default function ContactLayout({children}) {
   return(
     <Layout pageId="contact-page">
