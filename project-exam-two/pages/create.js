@@ -1,6 +1,5 @@
+import { useRouter } from 'next/router';
 import axios from 'axios';
-import Head from '../components/Head';
-import Layout from '../components/Layout';
 import Link from 'next/link';
 import {useForm} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -8,7 +7,8 @@ import * as yup from "yup";
 import { useState, useContext, useEffect } from 'react';
 import { BASE_URL } from '../constants/baseUrl';
 import AuthContext from '../context/AuthContext';
-import { useRouter } from 'next/router';
+import Head from '../components/Head';
+import Layout from '../components/Layout';
 
 const schema = yup.object().shape({
   name: yup.string().required("Please enter the accommodation name"),
@@ -18,23 +18,28 @@ const schema = yup.object().shape({
 
 export default function CreateAccommodation(){
   //Check for Auth and redirect if necessary
-  const [auth, setAuth] = useContext(AuthContext);
+  const [auth] = useContext(AuthContext);
   const router = useRouter();
-  useEffect(()=>{ !auth ? router.push('/login') : ""});
+  useEffect(()=>{ !auth ? router.push('/login') : ""},[auth]);
 
-  const [imageId, setImageId] = useState([20]);   // 20 is the current ID of the placeholder image stored on strapi. 
+  const [imageId, setImageId] = useState([20]);   // 20 is the ID of the placeholder image stored on strapi. 
   const [sendError, setSendError] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const [imageSubmitting, setImageSubmitting] = useState(null);
   const [success, setSuccess] = useState(false);
+  const [feedback, setFeedback] = useState('');
   const {register, handleSubmit, formState: {errors}} = useForm({
     resolver: yupResolver(schema),
   });
-  const [feedback, setFeedback] = useState('');
 
+  async function handleClick(){
+      await setSuccess(false);
+      document.querySelector("#image-form").reset();
+      document.querySelector("#create-form").reset();
+  }
+  
   // Submit file form, retrieve image id from response and add it to main form. 
   const [files, setFiles] = useState();
-
   async function handleImageSubmit(e){
     e.preventDefault();
     if(!files){
@@ -47,10 +52,9 @@ export default function CreateAccommodation(){
     }
     
     try {
-      const response = await axios.post(BASE_URL+'api/upload', formData, {headers: {Authorization:  `Bearer ${auth.data.jwt}`}});
+      const response = await axios.post(BASE_URL+ 'api/upload', formData, {headers: {Authorization:  `Bearer ${auth.data.jwt}`}});
       if(response.statusText === "OK"){
         setFeedback('Images uploaded successfully');
-        console.log(response);
         setImageSubmitting(null);
         let imageIdArray = [];
         for(let i = 0; i < response.data.length; i++){ // Get IDs of all newly uploaded image files and put in an array. 
@@ -112,7 +116,7 @@ export default function CreateAccommodation(){
             <p>Create a new accommodation listing using the form below</p>
             <p>New accommodation created successfully!</p>
             <div className='button-container'>
-              <button onClick={()=>{setSuccess(false)}}>Add Another</button>
+              <button onClick={handleClick}>Add Another</button>
             </div>
           </div>
         </div>
@@ -133,8 +137,7 @@ export default function CreateAccommodation(){
           <div>{sendError}</div>
         </div>
       </Layout>
-    )
-    
+    ) 
   }
 
   return(

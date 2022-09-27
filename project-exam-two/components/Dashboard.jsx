@@ -6,7 +6,7 @@ import Layout from "./Layout";
 export default function Dashboard() {
   const router = useRouter();
   function handleClick(){
-    localStorage.removeItem('Token');
+    localStorage.removeItem('Authorization');
     router.reload();
   }
   return(

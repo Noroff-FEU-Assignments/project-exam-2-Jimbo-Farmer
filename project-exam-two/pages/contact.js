@@ -1,11 +1,11 @@
 import axios from 'axios';
-import ContactLayout from '../components/ContactLayout';
 import Link from 'next/link';
 import {useForm} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState } from 'react';
 import { CONTACT_URL } from '../constants/contactUrl';
+import ContactLayout from '../components/ContactLayout';
 
 const schema = yup.object().shape({
   name: yup.string().required("Please provide a name"),

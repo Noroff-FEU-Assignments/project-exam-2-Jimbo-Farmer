@@ -1,6 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
-import footerBanner from '../public/images/footer-banner.jpg';
 
 export default function Footer() {
   return(

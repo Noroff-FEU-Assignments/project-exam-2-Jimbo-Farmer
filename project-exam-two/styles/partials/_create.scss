@@ -1,0 +1,12 @@
+.create-link {
+  display: inline-block;
+  background-color: $trollsk-blue;
+  border: unset;
+  padding: 5px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  &:hover {
+    cursor: pointer;
+    background-color: darken($color: $trollsk-blue, $amount: 10%);
+  }
+}

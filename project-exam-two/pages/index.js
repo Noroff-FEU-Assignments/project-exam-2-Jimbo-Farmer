@@ -1,19 +1,16 @@
+import axios from "axios";
+import { useEffect } from 'react';
+import { BASE_URL } from "../constants/baseUrl";
+import homeimage1 from '../public/images/home-image-1.jpg';
+import homeimage2 from '../public/images/home-image-2.jpg';
+import homeimage3 from '../public/images/home-image-3.jpg';
 import Layout from '../components/Layout';
 import Head from '../components/Head';
 import SearchForm from '../components/SearchForm';
 import GatewayBlock from '../components/GatewayBlock';
-import dateDefault from '../utils/dateDefault';
-import { useEffect } from 'react';
-import { BASE_URL } from "../constants/baseUrl";
-import axios from "axios";
-import homeimage1 from '../public/images/home-image-1.jpg';
-import homeimage2 from '../public/images/home-image-2.jpg';
-import homeimage3 from '../public/images/home-image-3.jpg';
 
 export default function Home(props) {
-  dateDefault();
   useEffect(()=> {
-    console.log(document.querySelector("#checkin").value.split("-"));
     window.addEventListener('scroll', handleScroll);
   })
   function handleScroll(){

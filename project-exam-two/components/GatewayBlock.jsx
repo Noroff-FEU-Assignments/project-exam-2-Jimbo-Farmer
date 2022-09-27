@@ -1,6 +1,5 @@
 import Image from "next/image"
 
-
 export default function GatewayBlock({image, imageAlt, attribute, attributeLink, heading, text}) {
   return(
     <div className='gateway-block'>

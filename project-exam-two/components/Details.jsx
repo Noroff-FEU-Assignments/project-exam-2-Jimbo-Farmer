@@ -1,6 +1,6 @@
 import { useState } from "react";
-import EnquiryModal from './EnquiryModal';
 import Image from "next/image";
+import EnquiryModal from './EnquiryModal';
 
 export default function Details({acc}) {
   const noOfImages = acc.data.attributes.images.data.length;
@@ -24,7 +24,6 @@ export default function Details({acc}) {
     }
   }
   function carouselRight(){
-    console.log('c-slide')
     if(currentImage < (noOfImages -1)){
       setCurrentImage(currentImage +1);
     }
@@ -34,7 +33,6 @@ export default function Details({acc}) {
     <>
       <h1 className="details__title">{acc.data.attributes.name}</h1>
       <div className="details">
-        
         <div className="details__flex-container">
           <div className="details__images">
             <div className="details__image-container">
@@ -49,7 +47,6 @@ export default function Details({acc}) {
             </div>
           </div>
           <div className="details__info">
-            
             <div className="details__description"><p>{acc.data.attributes.description}</p></div>
             <div className="details__price">Price per night: {acc.data.attributes.price} Norwegian Kroner</div>
             <div className="details__button-container button-container">

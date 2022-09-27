@@ -1,11 +1,13 @@
 import { useState } from 'react';
-import Dropdown from './Dropdown';
 import { useRouter } from 'next/router';
+import dateDefault from '../utils/dateDefault';
+import Dropdown from './Dropdown';
 
 export default function SearchForm({list}) {
   const [filteredList, setFilteredList] = useState([]);
   const [input, setInput] = useState('');
   const router = useRouter();
+  const dates = dateDefault();
   function handleChange(e){
     setFilteredList(searchDropdown(list.accommodation.data, e.target.value));
     if(e.target.value.length){
@@ -26,11 +28,11 @@ export default function SearchForm({list}) {
     <form className='search'>
       <div className='search__checkin'>
         <label htmlFor="checkin">Check In</label>
-        <input type="date" name="checkin" id="checkin" />
+        <input type="date" name="checkin" id="checkin" defaultValue={dates.checkin} />
       </div>
       <div className='search__checkout'>
         <label htmlFor="checkout">Check Out</label>
-        <input type="date" name="checkout" id="checkout" />
+        <input type="date" name="checkout" id="checkout" defaultValue={dates.checkout} />
       </div>
       <div className='search__accommodation'>
         <label htmlFor="accommodation-search">Search</label>

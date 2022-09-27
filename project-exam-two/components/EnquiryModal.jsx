@@ -5,6 +5,7 @@ import * as yup from "yup";
 import { useState } from 'react';
 import { ENQUIRY_URL } from '../constants/enquiriesUrl';
 import Link from 'next/link';
+import dateDefault from '../utils/dateDefault';
 
 const schema = yup.object().shape({
   accommodationname: yup.string(),
@@ -19,6 +20,7 @@ const schema = yup.object().shape({
 })
 
 export default function EnquiryModal({accommName, onClose, show}){
+  const dates = dateDefault();
   let modalVisibility = "hide";
   if(show){
     modalVisibility = "";
@@ -54,7 +56,7 @@ export default function EnquiryModal({accommName, onClose, show}){
         <button className='close-button' type='button' onClick={onClose}>Close</button>
         <div className='enquiry-intro page-intro'>
           <h1>Enquiry</h1>
-          <p>Your enquiry form is being submitted. <div className='loading'></div></p>
+          <p>Your enquiry form is being submitted. </p><div className='loading'></div>
         </div>
       </div>
     )
@@ -100,12 +102,12 @@ export default function EnquiryModal({accommName, onClose, show}){
         </div>
         <div className='enquiry-form__item enquiry-form__checkin'>
           <label htmlFor='checkin'>Check-in Date</label>
-          <input {...register("checkin")} type="date"/>
+          <input {...register("checkin")} type="date" id='checkin' defaultValue={dates.checkin}/>
           {errors.checkin && <span className='form__error enquiry-form__error'>{errors.checkin.message}</span>}
         </div>
         <div className='enquiry-form__item enquiry-form__checkout'>
           <label htmlFor='checkout'>Check-out Date</label>
-          <input {...register("checkout")} type="date"/>
+          <input {...register("checkout")} type="date" id='checkout' defaultValue={dates.checkout}/>
           {errors.checkout && <span className='form__error enquiry-form__error'>{errors.checkout.message}</span>}
         </div>
         <div className='enquiry-form__additional-label'>Number of guests:</div>

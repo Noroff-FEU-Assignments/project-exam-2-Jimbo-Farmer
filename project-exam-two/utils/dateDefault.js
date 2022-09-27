@@ -1,9 +1,9 @@
 import { useEffect } from "react";
 
 export default function dateDefault(){
-  useEffect(()=> {
-    const checkin = document.querySelector("#checkin");
-    const checkout = document.querySelector("#checkout");
+  // useEffect(()=> {
+    // const checkin = document.querySelector("#checkin");
+    // const checkout = document.querySelector("#checkout");
     let inDate = new Date();
     let inDay = inDate.getDate();
     let inMonth = inDate.getMonth() +1;
@@ -19,8 +19,10 @@ export default function dateDefault(){
     if(outMonth < 10){ outMonth = '0' + outMonth;};
     const today = inYear+'-'+inMonth+'-'+inDay;
     const checkoutDefault = outYear+'-'+outMonth+'-'+outDay;
-    checkin.value = today;
-    checkout.value = checkoutDefault; 
-  })
+    // checkin.value = today;
+    // checkout.value = checkoutDefault; 
+    return {checkin: today, checkout:checkoutDefault };
+  // }, [])
+  
 }  
   

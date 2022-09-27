@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { ENQUIRY_URL } from '../constants/enquiriesUrl';
-import Layout from '../components/Layout';
-import Head from '../components/Head';
-import AuthContext from '../context/AuthContext';
 import { useEffect, useState, useContext } from 'react';
-import EnquiryCard from '../components/EnquiryCard';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { ENQUIRY_URL } from '../constants/enquiriesUrl';
+import AuthContext from '../context/AuthContext';
+import Layout from '../components/Layout';
+import Head from '../components/Head';
+import EnquiryCard from '../components/EnquiryCard';
 
 export default function Enquiries() {
   const [auth, setAuth] = useContext(AuthContext);
@@ -15,11 +15,7 @@ export default function Enquiries() {
   const [update, setUpdate] = useState(false);
   const [filteredList, setFilteredList] = useState([]);
 
-  useEffect(()=>{
-    if(!auth){
-      router.push('/login');
-    }
-  });
+  useEffect(()=>{ !auth ? router.push('/login') : ""},[auth]);
   
   useEffect(() => {
     setInterval(()=>{setUpdate(!update)}, 30000);           //Update every 30 seconds with new messages.

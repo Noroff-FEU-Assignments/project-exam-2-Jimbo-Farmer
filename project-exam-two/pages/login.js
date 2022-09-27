@@ -1,13 +1,12 @@
-import { useEffect, useContext } from 'react';
 import axios from 'axios';
-import LoginLayout from '../components/LoginLayout';
-import Dashboard from '../components/Dashboard';
+import { useEffect, useContext, useState } from 'react';
 import {useForm} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import { useState } from 'react';
 import { LOGIN_URL } from '../constants/loginUrl';
 import AuthContext from '../context/AuthContext';
+import LoginLayout from '../components/LoginLayout';
+import Dashboard from '../components/Dashboard';
 
 const schema = yup.object().shape({
   identifier: yup.string().required("Please provide an email").email("Please enter a valid email address"),
@@ -37,7 +36,6 @@ export default function Login(){
     setSendError(null);
     try {
       const response = await axios.post(LOGIN_URL, data);
-      console.log(response);
       if(response.statusText === "OK"){
         setAuth(response);
         setSuccess(true);

@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { CONTACT_URL } from '../constants/contactUrl';
-import Layout from '../components/Layout';
-import Head from '../components/Head';
-import AuthContext from '../context/AuthContext';
 import { useEffect, useState, useContext } from 'react';
-import MessageCard from '../components/MessageCard';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { CONTACT_URL } from '../constants/contactUrl';
+import AuthContext from '../context/AuthContext';
+import Layout from '../components/Layout';
+import Head from '../components/Head';
+import MessageCard from '../components/MessageCard';
 
 export default function Messages() {
   const [auth, setAuth] = useContext(AuthContext);
@@ -14,11 +14,8 @@ export default function Messages() {
   const router = useRouter();
   const [update, setUpdate] = useState(false);
   
-  useEffect(()=>{
-    if(!auth){
-      router.push('/login');
-    }
-  }, [auth]);
+  useEffect(()=>{ !auth ? router.push('/login') : ""}, [auth]);
+  
   
   useEffect(() => {
     setInterval(()=>{setUpdate(!update)}, 30000);           //Update every 30 seconds with new messages.
@@ -57,7 +54,7 @@ export default function Messages() {
           <p>View messages received via the Holidaze contact form.</p>
         </div>
         {messageList.map((message)=>{
-          return <MessageCard key={message.id} name={message.attributes.name} email={message.attributes.email} content={message.attributes.messagecontent} /> 
+          return <MessageCard key={message.id} onDelete={()=>{setUpdate(!update)}} id={message.id} name={message.attributes.name} email={message.attributes.email} content={message.attributes.messagecontent} /> 
         })}
       </div>
     </Layout>
