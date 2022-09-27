@@ -4,6 +4,18 @@
   }
 }
 
+.nav__link-active {
+  &:after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: orange;
+  }
+}
+
 nav {
   position: absolute;
   padding-top: 40px;
@@ -11,7 +23,6 @@ nav {
   width: 0;
   text-align: center;
   transition: all 0.3s ease-in-out;
-  
   z-index: 2;
   &.show {
     width: 100%;
@@ -23,26 +34,11 @@ nav {
     font-family: $font-header;
     margin: 30px 80px;
     padding: 20px 0;
-    border-bottom: 1px solid $sunshine-yellow;
+    border-bottom: 0px solid $sunshine-yellow;
     border-color: orange;
     visibility: hidden;
-  }
-  @media (min-width: 1024px) {
+    transition: all 0.2s linear;
     position: relative;
-    top: 20px;
-    left: auto;
-    right: 10%;
-    width: unset;
-    text-align: right;
-    background-color: transparent;
-    height: 60px;
-    padding: 0;
-    a {
-      display: inline;
-      padding: 2px 0px;
-      margin: 10px;
-      visibility: unset;
-    }
   }
 }
 
@@ -111,4 +107,39 @@ a {
           transform: rotate(-35deg);
       }
   }
+}
+
+@media (min-width: 1024px) {
+  nav {
+    position: relative;
+    top: 10px;
+    left: auto;
+    right: 10%;
+    width: unset;
+    text-align: right;
+    background-color: transparent;
+    height: 60px;
+    padding: 0;
+    a {
+      padding: 2px 0px;
+      margin: 10px;
+      visibility: unset;
+      display: inline-block;
+      &:after {
+        transition: all 0.2s linear;
+        content: '';
+        position: absolute;
+        display: inline-block;
+        height: 1px;
+        width: 0;
+        bottom: 0;
+        left: 0;
+        background-color: orange;
+      }
+      &:hover:after {
+        width: 100%;
+      }
+    }
+  }
+  
 }
