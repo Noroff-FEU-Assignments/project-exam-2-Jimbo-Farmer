@@ -31,19 +31,12 @@
   text-align: center;
   margin: 2rem auto 0 auto;
   max-width: 400px;
-  @media (min-width: 1024px) {
-    max-width: 600px;
-    margin-top: 3rem;
-    p {
-      font-size: 1.3125rem;
-    }
-  }
 }
 
 .search {
   border: none;
   z-index: 1;
-  padding: 20px 5%;
+  padding: 20px 0;
   input, label {
     display: unset;
     width: unset;
@@ -51,19 +44,21 @@
     margin: unset;  
   }
   div {
-    margin: 10px auto;
+    margin: 20px auto;
     font-size: 1rem;
     background-color: white;
     width: 80%;
     max-width: 350px;
     border-radius: 5px;
-    height: 25px;
+    height: 28px;
   }
   label {
     display: inline-block;
     width: 90px;
     padding: 1px 3px;
-    height: 20px;
+    height: 100%;
+    text-align: right;
+    margin-right: 5px;
   }
   .search__checkin, .search__checkout {
     input {
@@ -74,8 +69,9 @@
     text-align: right;
     border: unset;
     border-left: 1px solid black;
+    border-radius: 0;
     font-size: 1rem;
-    height: 20px;
+    height: 100%;
     width: 50%;
     @media (min-width: 450px) {
       width: 55%;
@@ -87,23 +83,15 @@
     height: 100%;
     border-radius: 0 5px 5px 0;
     border: unset;
-    width: 30px;
+    width: 40px;
+    text-align: center;
     background-color: $trollsk-blue;
     color: white;
     &:hover {
       background-color: $sunshine-yellow;
       color: black;
     }
-  }
-  @media (min-width: 1300px) {
-    max-width: 900px;
-    display: flex;
-    
-    .search__checkin, .search__checkout {
-      width: 230px;
-      margin-right: 20px;
-    }    
-  }
+  } 
 }
 
 .dropdown {
@@ -148,9 +136,11 @@
 }
 
 .gateway {
+  position: relative;
+  top: -20px;
   font-size: 1.3125rem;
   text-align: center;
-
+  margin-top: 0;
 }
 
 .gateway-block {
@@ -191,6 +181,14 @@
 }
 
 @media (min-width: 1024px) {
+  #homepage .introduction {
+    max-width: 600px;
+    margin-top: 3rem;
+    p {
+      font-size: 1.3125rem;
+    }
+  }
+
   .gateway-block-container {
     display: flex;
     width: 80%;
@@ -217,3 +215,13 @@
   }
 }
 
+@media (min-width: 1300px) {
+  .search{
+    max-width: 900px;
+    display: flex; 
+  .search__checkin, .search__checkout {
+    width: 230px;
+    margin-right: 20px;
+    } 
+  }    
+}

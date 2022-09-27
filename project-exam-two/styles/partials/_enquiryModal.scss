@@ -1,6 +1,6 @@
 #enquiry-modal__container {
   position: fixed;
-  top: 60px;
+  top: 100px;
   z-index: 10;
   padding: 20px 0;
   min-height: 700px;
@@ -10,10 +10,19 @@
     position: absolute;
     top: 20px;
     right: 5%;
+    color: white;
+    background-color: darkred;
+    font-size: 14px;
+    padding: 2px 6px;
+    border: 1px solid white;
   }
-
-
 }
+
+.enquiry-intro {
+  width: 90%;
+  margin: 0 auto;
+}
+
 .enquiry-form__additional-label {
   width: 80%;
   margin: 0 auto;
@@ -43,6 +52,7 @@
 #enquiry-form {
   background-color: white;
   color: black;
+  width: 90%;
 }
 
 @media (min-width: 1024px){

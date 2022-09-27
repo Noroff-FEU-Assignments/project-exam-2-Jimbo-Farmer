@@ -58,7 +58,6 @@ export default function EnquiryModal({accommName, onClose, show}){
         </div>
       </div>
     )
-    
   }
 
   if(success){
@@ -88,7 +87,7 @@ export default function EnquiryModal({accommName, onClose, show}){
 
   return(  
     <div id='enquiry-modal__container' className={modalVisibility}>
-      <button className='close-button' type='button' onClick={onClose}>Close</button>
+      <div className='button-container'><button className='close-button' type='button' onClick={onClose}>Close</button></div>
       <div className='enquiry-intro page-intro'>
         <h1>Enquiry</h1>
         <p>Please fill in the enquiry form below and the accommodation provider will get back to you as soon as possible.</p>
@@ -99,7 +98,6 @@ export default function EnquiryModal({accommName, onClose, show}){
           <input {...register("accommodationname")} defaultValue={accommName}/>
           {errors.accommodationname && <span className='form__error enquiry-form__error'>{errors.accommodationname.message}</span>}
         </div>
-
         <div className='enquiry-form__item enquiry-form__checkin'>
           <label htmlFor='checkin'>Check-in Date</label>
           <input {...register("checkin")} type="date"/>

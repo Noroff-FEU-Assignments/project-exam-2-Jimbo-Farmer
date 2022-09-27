@@ -1,6 +1,7 @@
 .details__title {
   text-align: center;
   margin: 1.5rem;
+  text-transform: uppercase;
 }
 
 .details {
@@ -101,5 +102,11 @@
   .details__image-container {
     max-width: 400px;
     margin: 0 auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  .details__title {
+    margin: 3rem;
   }
 }

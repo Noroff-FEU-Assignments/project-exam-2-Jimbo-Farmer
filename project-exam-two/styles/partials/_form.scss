@@ -15,10 +15,20 @@ form {
     max-width: 400px;
     margin: 0 auto;
     box-sizing: border-box;
+    font-size: 1rem;
+    font-family: $font-copy;
   }
-  input, textarea {
-    margin-bottom: 10px;
+}
+
+.contact-form__item, .enquiry-form__item {
+  min-height: 80px;
+  input {
+    padding: 3px;
   }
+}
+
+.form__error {
+  color: darkred;
 }
 
 .contact-page__home-link {

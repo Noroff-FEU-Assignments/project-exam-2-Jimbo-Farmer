@@ -6,7 +6,7 @@
 
 .accommodation-card {
   background-color: #FBFBFB;
-  width: 80%;
+  // width: 90%;
   max-width: 400px;
   margin: 20px auto;
   border-radius: 5px;
@@ -33,6 +33,7 @@
   .accommodation-card__img-container {
     max-height: 510px;
     min-width: 250px;
+    overflow: hidden;
   }
   .accommodation-card__button-container {
     margin-top: 30px;
@@ -56,27 +57,13 @@
       flex: 2;
     }
   }
-  @media (min-width: 700px) {
-    max-width: 1000px;
-    .accommodation-card__link {
-      display: flex;
-      height: 250px;
-    }
-    .accommodation-card__img-container {
-      flex: 1;
-    }
-    .accommodation-card__img {
-      border-radius: 5px 0 0 5px;
-    }
-    .accommodation-card__details {
-      flex: 2;
-    }
-  }
+  
   @media (min-width: 1024px) {
+    width: 80%;
     h2 {
       font-size: 1.3125rem;
       margin: 0 auto 10px auto;
-    }
+    }    
     .accommodation-card__link {
       height: 300px;
     }

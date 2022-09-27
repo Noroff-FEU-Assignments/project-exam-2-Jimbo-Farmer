@@ -41,8 +41,12 @@ header {
 }
 
 h1 {
-  font-family: $font-header;
+  font-family: $font-title;
   font-size: 1.2rem;
+}
+
+h2 {
+  font-family: $font-header;
 }
 
 p {
@@ -52,7 +56,7 @@ p {
 
 .page-intro {
   max-width: 1000px;
-  width: 90%;
+  // width: 90%;
   margin: auto;
 }
 
@@ -69,6 +73,7 @@ p {
     border: unset;
     padding: 5px 20px;
     border-radius: 5px;
+    font-size: 1rem;
     &:hover {
       cursor: pointer;
       background-color: darken($color: $trollsk-blue, $amount: 10%);
@@ -99,7 +104,6 @@ p {
     font-size: 1.75rem;
   }
   .button-container button {
-    font-size: 1rem;
     padding: 6px 25px;
   }
   .page-intro {
