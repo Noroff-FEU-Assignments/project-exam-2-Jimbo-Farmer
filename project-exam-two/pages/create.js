@@ -10,6 +10,14 @@ import AuthContext from '../context/AuthContext';
 import Head from '../components/Head';
 import Layout from '../components/Layout';
 
+/**
+ * Page for creating new accommodation listings
+ * @Page
+ * Generates contact form and validates using yup. 
+ * Sends form using axios and returns depend on response from api (success, error, submitting)
+ * @returns {HTMLElement}
+ */
+
 const schema = yup.object().shape({
   name: yup.string().required("Please enter the accommodation name"),
   description: yup.string().required("Please provide a description").min(30, "Minimum 30 characters"),
@@ -64,6 +72,11 @@ export default function CreateAccommodation(){
       }
     } catch (error) {
       console.log(error);
+      if(error.response.statusText === 'Unauthorized'){
+        localStorage.removeItem('Authorization');
+        setAuth(null);
+        router.push('/login');
+      }
       setSendError("Apologies, an error has occurred.");
     } finally {
       setSubmitting(false);

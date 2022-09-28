@@ -10,7 +10,6 @@ import ContactLayout from '../components/ContactLayout';
 /**
  * Page for contact form
  * @Page
- * no params
  * Generates contact form and validates using yup. 
  * Sends form using axios and returns depend on response from api (success, error, submitting)
  * @returns {HTMLElement}

@@ -16,19 +16,20 @@ export default function Messages() {
   
   useEffect(()=>{ !auth ? router.push('/login') : ""}, [auth]);
   
-  
-  useEffect(() => {
-    setInterval(()=>{setUpdate(!update)}, 30000);           //Update every 30 seconds with new messages.
-    async function getMessages(){
-      try {
-        const response = await axios.get(CONTACT_URL, {headers: {Authorization:  `Bearer ${auth.data.jwt}`}} );
-        setMessageList(response.data.data);
-      } catch (error) {
-        console.log(error)
+  async function getMessages(){
+    try {
+      const response = await axios.get(CONTACT_URL, {headers: {Authorization:  `Bearer ${auth.data.jwt}`}} );
+      setMessageList(response.data.data);
+    } catch (error) {
+      console.log(error)
+      if(error.response.statusText === 'Unauthorized'){
+        localStorage.removeItem('Authorization');
+        setAuth(null);
+        router.push('/login');
       }
     }
-    getMessages();
-  }, [update]);
+  }
+  getMessages();
   
   if(!messageList.length){
     return (

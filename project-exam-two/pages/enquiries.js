@@ -27,7 +27,14 @@ export default function Enquiries() {
             setFilteredList(filterEnquiries(enquiryList, document.querySelector("#nameSearch").value));
           } else {setFilteredList(response.data.data);}
       } catch (error) {
-        console.log(error)
+        console.log(error);
+        if(error){
+          if(error.response.statusText === 'Unauthorized'){
+            localStorage.removeItem('Authorization');
+            setAuth(null);
+            router.push('/login');
+          }
+        }
       }
     }
     getEnquirys();

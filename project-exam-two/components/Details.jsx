@@ -56,6 +56,9 @@ export default function Details({acc}) {
           </div>
           <div className="details__info">
             <div className="details__description"><p>{acc.data.attributes.description}</p></div>
+            <hr />
+            <div className="details__features"><strong>Features:</strong> {acc.data.attributes.features}</div>
+            <hr />
             <div className="details__price">Price per night: {acc.data.attributes.price} Norwegian Kroner</div>
             <div className="details__button-container button-container">
               <button className="details__enquiry-link" onClick={openEnquiryModal}>Send Enquiry</button>

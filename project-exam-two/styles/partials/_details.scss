@@ -14,6 +14,11 @@
   padding-bottom: 20px;
 }
 
+.details__info hr{
+  width: 50%;
+  margin: 0 auto;
+}
+
 .details__image-container {
   text-align: center;
   font-size: 0;
@@ -70,11 +75,7 @@
   display: inline-block;
 }
 
-.details__description {
-  padding: 5px 15px;
-}
-
-.details__price {
+.details__description, .details__features, .details__price   {
   padding: 5px 15px;
 }
 
@@ -93,7 +94,7 @@
   .details__info {
     flex: 1;
   }
-  .details__description, .details__price {
+  .details__description, .details__features, .details__price {
     padding: 10px 35px;
     p {
       margin-top: 0;  
