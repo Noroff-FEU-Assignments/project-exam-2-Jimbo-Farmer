@@ -5,7 +5,6 @@ import { BASE_URL } from "../../constants/baseUrl";
 import Details from "../../components/Details";
 
 export default function SingleAccommodation({ accomm }) {
-  console.log(accomm.data)
   return(
     <Layout>
       <Head title={accomm.data.attributes.name} description={accomm.data.attributes.description}/>

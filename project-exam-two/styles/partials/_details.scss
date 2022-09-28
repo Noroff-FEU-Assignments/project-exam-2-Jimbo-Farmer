@@ -5,7 +5,7 @@
 }
 
 .details {
-  width: 80%;
+  width: 90%;
   max-width: 1000px;
   margin: 20px auto;
   border: 2px solid black;
@@ -107,6 +107,9 @@
 }
 
 @media (min-width: 1024px) {
+  .details {
+    width: 80%;
+  }
   .details__title {
     margin: 3rem;
   }
