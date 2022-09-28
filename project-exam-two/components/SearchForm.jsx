@@ -3,11 +3,21 @@ import { useRouter } from 'next/router';
 import dateDefault from '../utils/dateDefault';
 import Dropdown from './Dropdown';
 
+/**
+ * Generates search form for the homepage and passes search (filter) results to dropdown element.  
+ * Listens for input field change and generates a filtered list. 
+ * Stores results in localstorage for use by the results page. 
+ * @Component
+ * @param {Array} list - list of all accommodation from the api
+ * @returns {HTMLElement}
+ */
+
 export default function SearchForm({list}) {
   const [filteredList, setFilteredList] = useState([]);
   const [input, setInput] = useState('');
   const router = useRouter();
   const dates = dateDefault();
+
   function handleChange(e){
     setFilteredList(searchDropdown(list.accommodation.data, e.target.value));
     if(e.target.value.length){
@@ -17,9 +27,15 @@ export default function SearchForm({list}) {
     }
   }
 
-  function handleSearchClick(e){              //Use localstorage to store search terms and list of results to use on results page. 
+  //Redirect to results page and use localstorage to store search terms and list of results to use on results page.
+  function handleSearchClick(e){     
     e.preventDefault();
-    localStorage.setItem('ResultsList', JSON.stringify(filteredList));
+    if(document.querySelector('#accommodation-search').value.length === 0){ 
+      //If no input given, display all accommodation on results page rather than none. 
+      localStorage.setItem('ResultsList', JSON.stringify(list.accommodation.data));
+    } else {
+      localStorage.setItem('ResultsList', JSON.stringify(filteredList));
+    }   
     localStorage.setItem('Input', JSON.stringify(input));
     router.push('/results');
   }

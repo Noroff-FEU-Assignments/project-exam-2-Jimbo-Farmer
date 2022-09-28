@@ -3,6 +3,14 @@ import {useRouter} from 'next/router';
 import { useState } from 'react';
 import Footer from './Footer';
 
+/**
+ * Generates basic page layout including head.  
+ * @Component
+ * @param {children} children - all extra page content.
+ * @param {string} pageId - id so that page can be selected for specific styling.
+ * @returns {HTMLElement}
+ */
+
 export default function Layout({children, pageId}) {
   const router = useRouter();
   const [open, setOpen] = useState(false);

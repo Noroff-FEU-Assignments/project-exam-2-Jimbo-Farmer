@@ -16,7 +16,7 @@ export default function Dropdown({filteredList, input}) {
   if(input && !filteredList.length){
     return (
       <ul className="dropdown">
-        <li>No results</li>
+        <li className="dropdown__empty">No results</li>
       </ul>
     )
   }
@@ -33,18 +33,18 @@ export default function Dropdown({filteredList, input}) {
   return(
     <ul className="dropdown">
       {shortList.map((accomm)=>{
-        return  (
-                  <li key={accomm.id}>
-                    <Link href={`accommodation/${accomm.id}`}>
-                      <a className="dropdown__item" key={accomm.id}>
-                        <h3>{accomm.attributes.name}</h3>
-                        <div className="dropdown__image-container">
-                          <Image className="dropdown__image" src={accomm.attributes.images.data[0].attributes.formats.thumbnail.url} alt={accomm.attributes.name} width={50} height={50}/> 
-                        </div>
-                      </a>
-                    </Link>
-                  </li>
-                )
+        return (
+          <li key={accomm.id}>
+            <Link href={`accommodation/${accomm.id}`}>
+              <a className="dropdown__item" key={accomm.id}>
+                <h3>{accomm.attributes.name}</h3>
+                <div className="dropdown__image-container">
+                  <Image className="dropdown__image" src={accomm.attributes.images.data[0].attributes.formats.thumbnail.url} alt={accomm.attributes.name} width={100} height={100}/> 
+                </div>
+              </a>
+            </Link>
+          </li>
+        )
       })}
     </ul>
   )

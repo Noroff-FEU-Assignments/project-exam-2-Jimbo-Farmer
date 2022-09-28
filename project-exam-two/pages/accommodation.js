@@ -4,6 +4,13 @@ import Layout from '../components/Layout';
 import Head from '../components/Head';
 import AccommCard from '../components/AccommCard';
 
+/**
+ * Page showing all accommodation
+ * @Page
+ * @param {Object} props- list of all accommodation from the api
+ * @returns {HTMLElement}
+ */
+
 export default function AllAccommodation(props) {
   return(
     <Layout pageId='all-accommodation-page'>

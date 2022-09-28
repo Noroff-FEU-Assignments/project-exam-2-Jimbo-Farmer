@@ -1,5 +1,12 @@
 import Link from "next/link";
 
+/**
+ * Generates a footer 
+ * @Component
+ * No parameters
+ * @returns {HTMLElement}
+ */
+
 export default function Footer() {
   return(
     <div className="footer">

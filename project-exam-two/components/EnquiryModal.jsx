@@ -7,6 +7,16 @@ import { ENQUIRY_URL } from '../constants/enquiriesUrl';
 import Link from 'next/link';
 import dateDefault from '../utils/dateDefault';
 
+/**
+ * Generates a modal showing a form to make a booking enquiry. 
+ * Validates the form and handles submission using yup and axios.  
+ * @Component
+ * @param {String} accommName - the accommodation name to be used to auto-populate this field on the form
+ * @param {Function} onClose - function to hide the modal
+ * @param {Boolean} show - modal shows when this parameter is true
+ * @returns {HTMLElement}
+ */
+
 const schema = yup.object().shape({
   accommodationname: yup.string(),
   checkin: yup.string().required("Please provide a checkin date"),

@@ -94,13 +94,17 @@
   } 
 }
 
+.dropdown__empty {
+  height: 25px;
+  text-align: center;
+}
+
 .dropdown {
   padding: 0;
   li {
     list-style: none;
     position: relative;
-    min-height: 30px;
-    margin: 5px;
+    margin: 10px 0;
     border-radius: 5px;
     background-color: aliceblue;
     :hover {
@@ -116,6 +120,7 @@
       text-transform: capitalize;
       color: black;
       font-size: 18px;
+      padding-left: 10px;
     }
     
   }
@@ -187,6 +192,20 @@
     p {
       font-size: 1.3125rem;
     }
+  }
+  .dropdown li a {
+    height: 70px;
+  }
+  .dropdown h3 {
+    padding-left: 20px;
+  }
+  .dropdown .dropdown__image-container {
+    height: 70px;
+    width: 70px;
+  }
+  .dropdown__image {
+    height: 70px;
+    width: 70px;
   }
 
   .gateway-block-container {

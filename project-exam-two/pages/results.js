@@ -12,19 +12,19 @@ export default function Results() {
     resultsLength = resultsList.length;
   }
 
-  if(!input){
-    return(
-      <Layout pageId='results'>
-        <Head title='Results' description="Find your perfect getaway on Norway's west coast"/>
-        <div className='results__container main'>
-          <div className='results__intro page-intro'>
-            <h1>Results</h1>
-            <p>No results</p>
-          </div>
-        </div>
-      </Layout>
-    )
-  }
+  // if(!input){
+  //   return(
+  //     <Layout pageId='results'>
+  //       <Head title='Results' description="Find your perfect getaway on Norway's west coast"/>
+  //       <div className='results__container main'>
+  //         <div className='results__intro page-intro'>
+  //           <h1>Results</h1>
+  //           <p>No results</p>
+  //         </div>
+  //       </div>
+  //     </Layout>
+  //   )
+  // }
 
   return(
     <Layout pageId='results'>

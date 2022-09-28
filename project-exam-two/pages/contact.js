@@ -7,6 +7,15 @@ import { useState } from 'react';
 import { CONTACT_URL } from '../constants/contactUrl';
 import ContactLayout from '../components/ContactLayout';
 
+/**
+ * Page for contact form
+ * @Page
+ * no params
+ * Generates contact form and validates using yup. 
+ * Sends form using axios and returns depend on response from api (success, error, submitting)
+ * @returns {HTMLElement}
+ */
+
 const schema = yup.object().shape({
   name: yup.string().required("Please provide a name"),
   email: yup.string().required("Please provide your email address").email("Please enter a valid email address"),
