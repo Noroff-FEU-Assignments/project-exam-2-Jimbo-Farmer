@@ -1,3 +1,10 @@
+/**
+ * Generates a card to display an enquiry received from a 'customer' to an administrator.
+ * @component
+ * @param {various} - self-explanatory, see below.  
+ * @returns {HTMLElement}
+ */
+
 export default function EnquiryCard({accommodation, checkin, checkout, adults, noOfChildren, name, email, phone, query}) {
   return(
     <div className="enquiry-card">

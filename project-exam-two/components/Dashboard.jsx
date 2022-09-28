@@ -3,6 +3,13 @@ import Link from "next/link";
 import Head from "./Head";
 import Layout from "./Layout";
 
+/**
+ * Generates a dashboard for the admin user after checking that they have successfully logged in
+ * @Component
+ * @param {none} - 
+ * @returns {HTMLElement}
+ */
+
 export default function Dashboard() {
   const router = useRouter();
   function handleClick(){

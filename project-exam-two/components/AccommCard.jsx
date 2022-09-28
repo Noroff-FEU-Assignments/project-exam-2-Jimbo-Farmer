@@ -3,8 +3,9 @@ import Image from "next/image";
 
 /**
  * Generates a card to display accommodation information.
+ * @component
  * @param {object} acc - Data for this accommodation (obtained from the API) 
- * @returns {void}
+ * @returns {HTMLElement}
  */
 
 export default function AccommCard({acc}) {

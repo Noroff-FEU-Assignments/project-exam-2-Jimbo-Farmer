@@ -2,6 +2,14 @@ import { useState } from "react";
 import Image from "next/image";
 import EnquiryModal from './EnquiryModal';
 
+/**
+ * Generates HTML to display accommodation details. 
+ * Contains functionality to operate image carousel and open the enquiry modal. 
+ * @Component
+ * @param {object} acc - details for a specific accommodation 
+ * @returns {HTMLElement}
+ */
+
 export default function Details({acc}) {
   const noOfImages = acc.data.attributes.images.data.length;
   const [currentImage, setCurrentImage] = useState(0);
