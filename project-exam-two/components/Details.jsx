@@ -11,6 +11,7 @@ import EnquiryModal from './EnquiryModal';
  */
 
 export default function Details({acc}) {
+  console.log(acc.data.attributes.features)
   const noOfImages = acc.data.attributes.images.data.length;
   const [currentImage, setCurrentImage] = useState(0);
   let thumbnailList = [];

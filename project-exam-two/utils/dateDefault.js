@@ -1,9 +1,11 @@
-import { useEffect } from "react";
+/**
+ * Generates two dates to autopopulate checkin and checkout fields. Checkin is set to today and checkout in two days' time. 
+ * @function
+ * no params 
+ * @returns {object} - {checkin: today, checkout:checkoutDefault }
+ */
 
 export default function dateDefault(){
-  // useEffect(()=> {
-    // const checkin = document.querySelector("#checkin");
-    // const checkout = document.querySelector("#checkout");
     let inDate = new Date();
     let inDay = inDate.getDate();
     let inMonth = inDate.getMonth() +1;
@@ -18,11 +20,7 @@ export default function dateDefault(){
     if(outDay < 10){ outDay = '0' + outDay;};
     if(outMonth < 10){ outMonth = '0' + outMonth;};
     const today = inYear+'-'+inMonth+'-'+inDay;
-    const checkoutDefault = outYear+'-'+outMonth+'-'+outDay;
-    // checkin.value = today;
-    // checkout.value = checkoutDefault; 
+    const checkoutDefault = outYear+'-'+outMonth+'-'+outDay; 
     return {checkin: today, checkout:checkoutDefault };
-  // }, [])
-  
 }  
   

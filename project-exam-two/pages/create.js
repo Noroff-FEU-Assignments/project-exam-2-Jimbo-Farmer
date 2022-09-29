@@ -72,13 +72,6 @@ export default function CreateAccommodation(){
       }
     } catch (error) {
       console.log(error);
-      // if(error){
-      //   if(error.response.statusText === 'Unauthorized'){ //Logout and redirect to login if token has run out
-      //     localStorage.removeItem('Authorization');
-      //     setAuth(null);
-      //     router.push('/login');
-      //   }
-      // }
       setSendError("Apologies, an error has occurred.");
     } finally {
       setSubmitting(false);
