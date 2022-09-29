@@ -29,7 +29,7 @@ export default function Enquiries() {
       } catch (error) {
         console.log(error);
         if(error){
-          if(error.response.statusText === 'Unauthorized'){
+          if(error.response.statusText === 'Unauthorized'){ //Logout and redirect to login if token has run out
             localStorage.removeItem('Authorization');
             setAuth(null);
             router.push('/login');
