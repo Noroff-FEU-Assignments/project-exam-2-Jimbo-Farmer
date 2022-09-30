@@ -1,14 +1,11 @@
 import { useRouter } from 'next/router';
 import axios from 'axios';
-import Link from 'next/link';
 import {useForm} from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { useState, useContext, useEffect } from 'react';
 import { BASE_URL } from '../constants/baseUrl';
 import AuthContext from '../context/AuthContext';
-import Head from '../components/Head';
-import Layout from '../components/Layout';
 import CreateLayout from '../components/CreateLayout';
 
 /**

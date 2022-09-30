@@ -22,7 +22,7 @@ export default function Enquiries() {
       try {
         const response = await axios.get(ENQUIRY_URL, {headers: {Authorization:  `Bearer ${auth.data.jwt}`}} );
           setEnquiryList(response.data.data);
-          if(document.querySelector("#nameSearch").value){                                                        //Check if list is being filtered and if so: generate new filtered list using same filter input. 
+          if(document.querySelector("#nameSearch").value){      //Check if list is being filtered and if so: generate new filtered list using same filter input. 
             setFilteredList(filterEnquiries(enquiryList, document.querySelector("#nameSearch").value));
           } else {setFilteredList(response.data.data);}
       } catch (error) {
