@@ -12,7 +12,7 @@ import Image from "next/image";
  */
 
 export default function Dropdown({filteredList, input}) {
-  //Check for text input and no results
+  //Check for text input and no results and display 'No results' if true. 
   if(input && !filteredList.length){
     return (
       <ul className="dropdown">

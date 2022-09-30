@@ -9,10 +9,12 @@
     content: '';
     position: absolute;
     height: 1px;
-    width: 100%;
+    width: 50%;
     bottom: 0;
     left: 0;
-    background-color: orange;
+    right: 0;
+    margin: 0 auto;
+    background-color: $sunrise-orange;
   }
 }
 
@@ -33,9 +35,9 @@ nav {
   a {
     font-family: $font-header;
     margin: 30px 80px;
-    padding: 20px 0;
-    border-bottom: 0px solid $sunshine-yellow;
-    border-color: orange;
+    padding: 40px 0px 5px 0px;
+    border-bottom: 0px solid $sunrise-orange;
+    border-color: $sunrise-orange;
     visibility: hidden;
     transition: all 0.2s linear;
     position: relative;
@@ -134,12 +136,16 @@ a {
         width: 0;
         bottom: 0;
         left: 0;
-        background-color: orange;
+        background-color: $sunrise-orange;
       }
       &:hover:after {
         width: 100%;
       }
     }
   }
-  
+  .nav__link-active {
+    &:after {
+      width: 100%;
+    }
+  }
 }

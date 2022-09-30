@@ -11,7 +11,7 @@
     top: 20px;
     right: 5%;
     color: white;
-    background-color: darkred;
+    background-color: $warning-red;
     font-size: 14px;
     padding: 2px 6px;
     border: 1px solid white;
@@ -45,6 +45,9 @@
 }
 
 .enquiry__link-to-home {
+  width: 90%;
+  margin: 0 auto;
+  max-width: 1000px;
   text-decoration: underline;
   text-transform: none;
 }

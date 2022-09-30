@@ -12,6 +12,9 @@ import GatewayBlock from '../components/GatewayBlock';
 export default function Home(props) {
   useEffect(()=> {
     window.addEventListener('scroll', handleScroll);
+    return()=>{
+      window.removeEventListener('scroll', handleScroll);
+    }
   })
   function handleScroll(){
     const navbar = document.querySelector("header");

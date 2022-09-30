@@ -5,6 +5,7 @@ import * as yup from "yup";
 import { useState } from 'react';
 import { ENQUIRY_URL } from '../constants/enquiriesUrl';
 import Link from 'next/link';
+import EnquiryModalLayout from './EnquiryModalLayout';
 import dateDefault from '../utils/dateDefault';
 
 /**
@@ -46,7 +47,6 @@ export default function EnquiryModal({accommName, onClose, show}){
     setSubmitting(true);
     setSendError(null);
     setSuccess(null);
-
     try {
       const response = await axios.post(ENQUIRY_URL, {"data": data});
       if(response.statusText === "OK"){
@@ -62,48 +62,26 @@ export default function EnquiryModal({accommName, onClose, show}){
 
   if(submitting){
     return (
-      <div id='enquiry-modal__container' className={modalVisibility}>
-        <button className='close-button' type='button' onClick={onClose}>Close</button>
-        <div className='enquiry-intro page-intro'>
-          <h1>Enquiry</h1>
-          <p>Your enquiry form is being submitted. </p><div className='loading'></div>
-        </div>
-      </div>
+      <EnquiryModalLayout visibility={modalVisibility} close={onClose} intro={'Your enquiry form is being submitted.'} loading={true} />
     )
   }
 
   if(success){
     return (
-      <div id='enquiry-modal__container' className={modalVisibility}>
-        <button className='close-button' type='button' onClick={onClose}>Close</button>
-        <div className='enquiry-intro page-intro'>
-          <h1>Enquiry</h1>
-          <p>Your enquiry form has been successfully sent.</p>
-          <Link href='/'><a className='enquiry__link-to-home'>&lt;&lt; Back to Hompage</a></Link>
-        </div>
-      </div>
+      <EnquiryModalLayout visibility={modalVisibility} close={onClose} intro={'Your enquiry form has been successfully sent.'} loading={false}>
+        <Link href='/'><a className='enquiry__link-to-home'>&lt;&lt; Back to Hompage</a></Link>
+      </EnquiryModalLayout>
     )
   }
 
   if(sendError){
     return (
-      <div id='enquiry-modal__container' className={modalVisibility}>
-        <button className='close-button' type='button' onClick={onClose}>Close</button>
-        <div className='enquiry-intro page-intro'>
-          <h1>Enquiry</h1>
-          <p>Apologies, an error has occurred.</p>
-        </div>
-      </div>
+      <EnquiryModalLayout visibility={modalVisibility} close={onClose} intro={'Apologies, an error has occurred.'} loading={false} />
     )
   }
 
-  return(  
-    <div id='enquiry-modal__container' className={modalVisibility}>
-      <div className='button-container'><button className='close-button' type='button' onClick={onClose}>Close</button></div>
-      <div className='enquiry-intro page-intro'>
-        <h1>Enquiry</h1>
-        <p>Please fill in the enquiry form below and the accommodation provider will get back to you as soon as possible.</p>
-      </div>
+  return(
+    <EnquiryModalLayout visibility={modalVisibility} close={onClose} intro={'Please fill in the enquiry form below and the accommodation provider will get back to you as soon as possible.'} loading={false}>
       <form id='enquiry-form' onSubmit={handleSubmit(onSubmit)}>
         <div className='enquiry-form__item enquiry-form__accommodation-name'>
           <label htmlFor='accommodationname'>Accommodation</label>
@@ -155,6 +133,6 @@ export default function EnquiryModal({accommName, onClose, show}){
           <button>Send</button>
         </div> 
       </form>
-    </div>
+    </EnquiryModalLayout>  
   )
 }

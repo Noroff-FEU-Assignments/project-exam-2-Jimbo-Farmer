@@ -20,14 +20,14 @@
   top: 20px;
   right: 5%;
   color: white;
-  background-color: darkred;
+  background-color: $warning-red;
   border-radius: 5px;
   border: none;
   font-size: 14px;
   padding: 2px 6px;
   &:hover {
     cursor: pointer;
-    background-color: lighten($color: darkred, $amount: 10%);
+    background-color: lighten($color: $warning-red, $amount: 10%);
   }
 }
 

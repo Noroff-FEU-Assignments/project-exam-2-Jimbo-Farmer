@@ -11,14 +11,14 @@ import EnquiryModal from './EnquiryModal';
  */
 
 export default function Details({acc}) {
-  console.log(acc.data.attributes.features)
-  const noOfImages = acc.data.attributes.images.data.length;
+  const imagePath = acc.data.attributes.images.data;
+  const noOfImages = imagePath.length;
   const [currentImage, setCurrentImage] = useState(0);
   let thumbnailList = [];
   (function thumbnails(){
     if(noOfImages > 1){
       for(let i = 0; i < noOfImages; i++){
-        thumbnailList.push(acc.data.attributes.images.data[i])
+        thumbnailList.push(imagePath[i])
       }
     }
   })();
@@ -46,7 +46,7 @@ export default function Details({acc}) {
           <div className="details__images">
             <div className="details__image-container">
               <button onClick={carouselLeft} className="details__carousel-left"><div className="arrow-slope-l"></div><div className="arrow-slope-r"></div></button>
-              <Image src={acc.data.attributes.images.data[currentImage].attributes.url} alt={acc.data.attributes.images.data[currentImage].attributes.alternativeText} width={800} height={800}/>
+              <Image src={imagePath[currentImage].attributes.url} alt={imagePath[currentImage].attributes.alternativeText} width={800} height={800}/>
               <button onClick={carouselRight} className="details__carousel-right"><div className="arrow-slope-l"></div><div className="arrow-slope-r"></div></button>
             </div>
             <div className="details__thumbnails">

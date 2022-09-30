@@ -15,8 +15,8 @@
 
 #logout {
   margin-top: 30px;
-  background-color: darkred;
+  background-color: $warning-red;
   &:hover {
-    background-color: darken($color: darkred, $amount: 10%);
+    background-color: darken($color: $warning-red, $amount: 10%);
   }
 }
