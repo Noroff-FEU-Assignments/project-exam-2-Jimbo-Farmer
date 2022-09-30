@@ -10,3 +10,9 @@
     background-color: darken($color: $trollsk-blue, $amount: 10%);
   }
 }
+
+.image-form__feedback {
+  width: 80%;
+  margin: 0 auto;
+  max-width: 400px;
+}

@@ -18,7 +18,6 @@ export default function Enquiries() {
   useEffect(()=>{ !auth ? router.push('/login') : ""},[auth]);
   
   useEffect(() => {
-    setInterval(()=>{setUpdate(!update)}, 30000);           //Update every 30 seconds with new messages.
     async function getEnquirys(){
       try {
         const response = await axios.get(ENQUIRY_URL, {headers: {Authorization:  `Bearer ${auth.data.jwt}`}} );

@@ -16,15 +16,18 @@ export default function Messages() {
   
   useEffect(()=>{ !auth ? router.push('/login') : ""}, [auth]);
   
-  async function getMessages(){
-    try {
-      const response = await axios.get(CONTACT_URL, {headers: {Authorization:  `Bearer ${auth.data.jwt}`}} );
-      setMessageList(response.data.data);
-    } catch (error) {
-      console.log(error)
+  useEffect(()=>{
+    async function getMessages(){
+      try {
+        const response = await axios.get(CONTACT_URL, {headers: {Authorization:  `Bearer ${auth.data.jwt}`}} );
+        setMessageList(response.data.data);
+      } catch (error) {
+        console.log(error)
+      }
     }
-  }
-  getMessages();
+    getMessages();
+  }, [update, auth]);
+  
   
   if(!messageList.length){
     return (

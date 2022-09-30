@@ -9,6 +9,7 @@ import { BASE_URL } from '../constants/baseUrl';
 import AuthContext from '../context/AuthContext';
 import Head from '../components/Head';
 import Layout from '../components/Layout';
+import CreateLayout from '../components/CreateLayout';
 
 /**
  * Page for creating new accommodation listings
@@ -99,95 +100,58 @@ export default function CreateAccommodation(){
 
   if(submitting){
     return (
-      <Layout pageId="create-page">
-        <Head title='Create' description="Create a new accommodation listing."/>
-        <div id='create-page__container' className='main'>
-          <div className='create-intro page-intro'>
-            <Link href='/login'><a className='dashboard-link'>Back to Dashboard</a></Link>
-            <h1>Create New Listing</h1>
-            <p>Create a new accommodation listing using the form below</p>
-          </div>
-          <div>Creating...</div><div className='loading'></div>
-        </div>
-      </Layout>
+      <CreateLayout intro={'Submitting'} loading={true} />
     )
   }
 
   if(success){
     return (
-      <Layout pageId="create-page">
-        <Head title='Create' description="Create a new accommodation listing."/>
-        <div id='create-page__container' className='main'>
-          <div className='create-intro page-intro'>
-            <Link href='/login'><a className='dashboard-link'>Back to Dashboard</a></Link>
-            <h1>Create New Listing</h1>
-            <p>Create a new accommodation listing using the form below</p>
-            <p>New accommodation created successfully!</p>
-            <div className='button-container'>
-              <button onClick={handleClick}>Add Another</button>
-            </div>
-          </div>
+      <CreateLayout intro={'New accommodation created successfully!'} loading={false} >
+        <div className='button-container'>
+          <button onClick={handleClick}>Add Another</button>
         </div>
-      </Layout>
+      </CreateLayout>
     )
   }
 
   if(sendError){
     return(
-      <Layout pageId="create-page">
-        <Head title='Create' description="Create a new accommodation listing."/>
-        <div id='create-page__container' className='main'>
-          <div className='create-intro page-intro'>
-            <Link href='/login'><a className='dashboard-link'>Back to Dashboard</a></Link>
-            <h1>Create New Listing</h1>
-            <p>Create a new accommodation listing using the form below</p>
-          </div>
-          <div>{sendError}</div>
-        </div>
-      </Layout>
+      <CreateLayout intro={sendError} loading={false} />
     ) 
   }
 
   return(
-    <Layout pageId="create-page">
-      <Head title='Create' description="Create a new accommodation listing."/>
-      <div id='create-page__container' className='main'>
-        <div className='create-intro page-intro'>
-          <Link href='/login'><a className='dashboard-link'>Back to Dashboard</a></Link>
-          <h1>Create New Listing</h1>
-          <p>Create a new accommodation listing using the form below. Add images first, then submit the rest of the details.</p>
+    <CreateLayout intro={'Create a new accommodation listing using the form below. Add images first, then submit the rest of the details.'} loading={false}>
+      <form id='image-form' onSubmit={handleImageSubmit}>
+        <label htmlFor="imageFile">Add accommodation image(s)</label>
+        <input type="file" onChange={(e)=>setFiles(e.target.files)} multiple/>
+        <div className='image-form__image-display'></div>
+        <div className='create-form__button-container button-container'>
+          <button>Add Image(s)</button>
         </div>
-        <form id='image-form' onSubmit={handleImageSubmit}>
-          <label htmlFor="imageFile">Add accommodation image(s)</label>
-          <input type="file" onChange={(e)=>setFiles(e.target.files)} multiple/>
-          <div className='image-form__image-display'></div>
-          <div className='create-form__button-container button-container'>
-            <button>Add Image(s)</button>
-          </div>
-          <div className={imageSubmitting ? 'loading' : ''}></div>
-          <div>{feedback}</div>
-        </form>
-        <form id='create-form' onSubmit={handleSubmit(onSubmit)}>
-          <div className='create-form__item'>
-            <label htmlFor='name'>Accommodation Name</label>
-            <input {...register("name")} />
-            {errors.name && <span className='form__error create-form__error'>{errors.name.message}</span>}
-          </div>
-          <div className='create-form__item'>
-            <label htmlFor='name'>Description</label>
-            <textarea {...register("description")} rows='5'/>
-            {errors.description && <span className='form__error create-form__error'>{errors.description.message}</span>}
-          </div>
-          <div className='create-form__item'>
-            <label htmlFor='price'>Price</label>
-            <input {...register("price")} />
-            {errors.price && <span className='form__error create-form__error'>{errors.price.message}</span>}
-          </div>
-          <div className='create-form__button-container button-container'>
-            <button>Submit</button>
-          </div> 
-        </form>
-      </div>
-    </Layout>
+        <div className={imageSubmitting ? 'loading' : ''}></div>
+        <div className='image-form__feedback'>{feedback}</div>
+      </form>
+      <form id='create-form' onSubmit={handleSubmit(onSubmit)}>
+        <div className='create-form__item'>
+          <label htmlFor='name'>Accommodation Name</label>
+          <input {...register("name")} />
+          {errors.name && <span className='form__error create-form__error'>{errors.name.message}</span>}
+        </div>
+        <div className='create-form__item'>
+          <label htmlFor='name'>Description</label>
+          <textarea {...register("description")} rows='5'/>
+          {errors.description && <span className='form__error create-form__error'>{errors.description.message}</span>}
+        </div>
+        <div className='create-form__item'>
+          <label htmlFor='price'>Price</label>
+          <input {...register("price")} />
+          {errors.price && <span className='form__error create-form__error'>{errors.price.message}</span>}
+        </div>
+        <div className='create-form__button-container button-container'>
+          <button>Submit</button>
+        </div> 
+      </form>
+    </CreateLayout>
   )
 }
