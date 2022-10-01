@@ -19,6 +19,7 @@ import CreateLayout from '../components/CreateLayout';
 const schema = yup.object().shape({
   name: yup.string().required("Please enter the accommodation name"),
   description: yup.string().required("Please provide a description").min(30, "Minimum 30 characters"),
+  features: yup.string().required("Please add features").min(10, "Minimum 10 characters"),
   price: yup.number().required("Please enter price per night").min(100, "Minimum price 100kr per night"),
 })
 
@@ -38,6 +39,7 @@ export default function CreateAccommodation(){
     resolver: yupResolver(schema),
   });
 
+  // Reset form when user will create more than one accommodation  
   async function handleClick(){
       await setSuccess(false);
       document.querySelector("#image-form").reset();
@@ -104,9 +106,7 @@ export default function CreateAccommodation(){
   if(success){
     return (
       <CreateLayout intro={'New accommodation created successfully!'} loading={false} >
-        <div className='button-container'>
-          <button onClick={handleClick}>Add Another</button>
-        </div>
+        <div className='button-container'><button onClick={handleClick}>Add Another</button></div>
       </CreateLayout>
     )
   }
@@ -136,9 +136,14 @@ export default function CreateAccommodation(){
           {errors.name && <span className='form__error create-form__error'>{errors.name.message}</span>}
         </div>
         <div className='create-form__item'>
-          <label htmlFor='name'>Description</label>
+          <label htmlFor='description'>Description</label>
           <textarea {...register("description")} rows='5'/>
           {errors.description && <span className='form__error create-form__error'>{errors.description.message}</span>}
+        </div>
+        <div className='create-form__item'>
+          <label htmlFor='features'>Features, separated with a '-'</label>
+          <textarea {...register("features")} rows='5'/>
+          {errors.features && <span className='form__error create-form__error'>{errors.features.message}</span>}
         </div>
         <div className='create-form__item'>
           <label htmlFor='price'>Price</label>

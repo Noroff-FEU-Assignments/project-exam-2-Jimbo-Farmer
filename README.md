@@ -5,9 +5,6 @@ password: Admin123
 
 # Project Exam 2
 
-## Goal
-To take the skills learned over the last two years and take on an extensive project where the finished product should reflect the candidate's general development capabilities, in addition to visual and technical skills.
-
 ## Brief
 
 The final submission must have the following:
