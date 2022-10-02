@@ -17,6 +17,7 @@ export default function Head({title = "", description = ""}) {
         Holidaze
       </title>
       <meta name="description" content={description} />
+      <link rel="icon" href="/favicon.svg" />
     </NextHead>
   )
 }
