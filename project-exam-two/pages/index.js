@@ -18,6 +18,7 @@ import GatewayBlock from '../components/GatewayBlock';
  */
 
 export default function Home(props) {
+  console.log(props);
   useEffect(()=> {
     window.addEventListener('scroll', handleScroll);
     return()=>{
