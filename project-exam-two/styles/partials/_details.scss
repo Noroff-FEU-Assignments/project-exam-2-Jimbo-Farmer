@@ -25,6 +25,9 @@
   text-align: center;
   font-size: 0;
   position: relative;
+  span {
+    border-radius: 5px 5px 0 0;
+  }
 }
 
 .details__carousel-left, .details__carousel-right {
@@ -115,5 +118,10 @@
   }
   .details__title {
     margin: 3rem;
+  }
+  .details__image-container {
+    span {
+      border-radius: 0;
+    }
   }
 }
