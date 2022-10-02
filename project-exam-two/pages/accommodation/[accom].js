@@ -4,6 +4,13 @@ import Layout from '../../components/Layout';
 import { BASE_URL } from "../../constants/baseUrl";
 import Details from "../../components/Details";
 
+/**
+ * Generates pages for each accommodation.  
+ * @Page
+ * @param {list} accomm- list of accommodation.
+ * @returns {HTMLElement}
+ */
+
 export default function SingleAccommodation({ accomm }) {
   return(
     <Layout>
@@ -18,7 +25,6 @@ export async function getStaticPaths(){
   try {
     const response = await axios.get(url);
     const accomm = response.data;
-    console.log(accomm);
     const paths = accomm.data.map(item => {
       return {
         params: {accom: item.id.toString()}
@@ -43,6 +49,7 @@ export async function getStaticProps({ params }){
   }
   return {
     props: {accomm: accomm},
+    revalidate: 30,
   };
 }
 
