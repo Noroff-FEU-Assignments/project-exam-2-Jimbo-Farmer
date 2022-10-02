@@ -2,15 +2,15 @@
 
 This is an exam project based on the brief below. 
 
-Download the zip file. 
-Open in code editor. 
-Run 'npm install' in the terminal.
-Run 'npm run dev' in the terminal.
+- Download the zip file. 
+- Open in code editor. 
+- Run 'npm install' in the terminal.
+- Run 'npm run dev' in the terminal.
 
 ## Login Info for admin users. 
 
-email: admin@admin.com
-password: Admin123
+- email: admin@admin.com
+- password: Admin123
 
 
 ## Brief
