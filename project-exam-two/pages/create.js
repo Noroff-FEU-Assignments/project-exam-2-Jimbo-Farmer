@@ -106,6 +106,7 @@ export default function CreateAccommodation(){
   if(success){
     return (
       <CreateLayout intro={'New accommodation created successfully!'} loading={false} >
+        <p className='create__feedback'>Refresh the accommodation pages after approximately 2 minutes to view the new accommodation listing on the website.</p>
         <div className='button-container'><button onClick={handleClick}>Add Another</button></div>
       </CreateLayout>
     )
