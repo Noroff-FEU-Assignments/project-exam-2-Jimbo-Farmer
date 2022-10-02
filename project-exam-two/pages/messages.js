@@ -8,6 +8,13 @@ import Layout from '../components/Layout';
 import Head from '../components/Head';
 import MessageCard from '../components/MessageCard';
 
+/**
+ * Page for displaying messages to an administrator
+ * @Page
+ * Fetches messages and provides functionality to delete messages. 
+ * @returns {HTMLElement}
+ */
+
 export default function Messages() {
   const [auth, setAuth] = useContext(AuthContext);
   const [messageList, setMessageList] = useState([]);

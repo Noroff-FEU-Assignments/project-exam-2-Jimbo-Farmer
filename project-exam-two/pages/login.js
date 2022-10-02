@@ -8,6 +8,15 @@ import AuthContext from '../context/AuthContext';
 import LoginLayout from '../components/LoginLayout';
 import Dashboard from '../components/Dashboard';
 
+/**
+ * Login page for admin users
+ * @Page
+ * Generates login form and validates using yup. 
+ * Sends form using axios and returns depend on response from api (success, error, submitting)
+ * Displays dashboard component on submission success 
+ * @returns {HTMLElement}
+ */
+
 const schema = yup.object().shape({
   identifier: yup.string().required("Please provide an email").email("Please enter a valid email address"),
   password: yup.string().required("Please enter a password")

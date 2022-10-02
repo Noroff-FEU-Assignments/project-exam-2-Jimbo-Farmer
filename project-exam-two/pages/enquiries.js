@@ -8,6 +8,12 @@ import Layout from '../components/Layout';
 import Head from '../components/Head';
 import EnquiryCard from '../components/EnquiryCard';
 
+/**
+ * Page for displaying enquiries to an administrator
+ * @Page
+ * @returns {HTMLElement}
+ */
+
 export default function Enquiries() {
   const [auth, setAuth] = useContext(AuthContext);
   const [enquiryList, setEnquiryList] = useState([]);

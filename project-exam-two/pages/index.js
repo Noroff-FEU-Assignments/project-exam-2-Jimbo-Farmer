@@ -9,6 +9,14 @@ import Head from '../components/Head';
 import SearchForm from '../components/SearchForm';
 import GatewayBlock from '../components/GatewayBlock';
 
+/**
+ * The homepage, where users can search for accommodation.
+ * @Page
+ * Fetches accommodation from API and provides search (filter) functionality
+ * @param {children} props - accommodation list. 
+ * @returns {HTMLElement}
+ */
+
 export default function Home(props) {
   useEffect(()=> {
     window.addEventListener('scroll', handleScroll);
