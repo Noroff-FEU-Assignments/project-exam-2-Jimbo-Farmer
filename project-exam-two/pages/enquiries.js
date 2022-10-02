@@ -36,7 +36,7 @@ export default function Enquiries() {
       }
     }
     getEnquirys();
-  }, [update]);
+  }, [update, auth.data.jwt, enquiryList]);
 
   //Filter enquiries when filter input changes. 
   function handleChange(e){
