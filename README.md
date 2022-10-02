@@ -1,6 +1,9 @@
 # Holidaze
 
 This is an exam project based on the brief below. 
+The final website is here(https://neon-hamster-1b3f8e.netlify.app/)
+
+## Instructions
 
 - Download the zip file. 
 - Open in code editor. 
