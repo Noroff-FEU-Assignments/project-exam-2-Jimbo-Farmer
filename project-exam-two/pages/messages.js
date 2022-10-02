@@ -14,7 +14,7 @@ export default function Messages() {
   const router = useRouter();
   const [update, setUpdate] = useState(false);
   
-  useEffect(()=>{ !auth ? router.push('/login') : ""}, [auth]);
+  useEffect(()=>{ !auth ? router.push('/login') : ""}, [auth, router]);
   
   useEffect(()=>{
     async function getMessages(){

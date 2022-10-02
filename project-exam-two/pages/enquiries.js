@@ -15,7 +15,7 @@ export default function Enquiries() {
   const [update, setUpdate] = useState(false);
   const [filteredList, setFilteredList] = useState([]);
 
-  useEffect(()=>{ !auth ? router.push('/login') : ""},[auth]);
+  useEffect(()=>{ !auth ? router.push('/login') : ""},[auth, router]);
   
   useEffect(() => {
     async function getEnquirys(){

@@ -27,7 +27,7 @@ export default function CreateAccommodation(){
   //Check for Auth and redirect if necessary
   const [auth] = useContext(AuthContext);
   const router = useRouter();
-  useEffect(()=>{ !auth ? router.push('/login') : ""},[auth]);
+  useEffect(()=>{ !auth ? router.push('/login') : ""},[auth, router]);
 
   const [imageId, setImageId] = useState([20]);   // 20 is the ID of the placeholder image stored on strapi. 
   const [sendError, setSendError] = useState(null);
@@ -141,7 +141,7 @@ export default function CreateAccommodation(){
           {errors.description && <span className='form__error create-form__error'>{errors.description.message}</span>}
         </div>
         <div className='create-form__item'>
-          <label htmlFor='features'>Features, separated with a '-'</label>
+          <label htmlFor='features'>Features, separated with a &apos;-&apos;</label>
           <textarea {...register("features")} rows='5'/>
           {errors.features && <span className='form__error create-form__error'>{errors.features.message}</span>}
         </div>
