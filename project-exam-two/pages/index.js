@@ -71,7 +71,7 @@ export async function getStaticProps(){
     props: {
       accommodation: accommodation,
     },
-    // revalidate: 60,
+    revalidate: 60,
   };
 }
 
