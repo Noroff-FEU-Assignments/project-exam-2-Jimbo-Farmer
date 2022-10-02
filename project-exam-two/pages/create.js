@@ -120,7 +120,7 @@ export default function CreateAccommodation(){
   return(
     <CreateLayout intro={'Create a new accommodation listing using the form below. Add images first, then submit the rest of the details.'} loading={false}>
       <form id='image-form' onSubmit={handleImageSubmit}>
-        <label htmlFor="imageFile">Add accommodation image(s)</label>
+        <label htmlFor="imageFile">Add accommodation image(s) - select several files using CTRL key.</label>
         <input type="file" onChange={(e)=>setFiles(e.target.files)} multiple/>
         <div className='image-form__image-display'></div>
         <div className='create-form__button-container button-container'>
