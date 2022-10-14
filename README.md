@@ -1,7 +1,13 @@
 # Holidaze
 
+
+
+## Description
+
 This is an exam project based on the brief below. 
-The final website is [here](https://neon-hamster-1b3f8e.netlify.app/)
+The final website is [here](https://neon-hamster-1b3f8e.netlify.app/).
+The backend of the project was completed using Strapi CMS hosted with Heroku and Cloudinary. 
+The frontend is a Next.js app with styling in SCSS. 
 
 ## Instructions
 
