@@ -28,7 +28,10 @@ The frontend is a Next.js app with styling in SCSS.
 
 - The brief below is the property of Noroff School of Technology and Digital Media.
 - Some (four) of the images are from unsplash and these contain the name of the photographer and links to the original image. The rest of the images were generated using DALL-E 2.  
-- Feel free to use any of my design and code :)  
+- Feel free to use any of my design and code 🙂  
+
+----------------------------------------------------------
+----------------------------------------------------------
 
 ## Brief
 
