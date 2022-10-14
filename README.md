@@ -1,11 +1,14 @@
 # Holidaze
 
-![holidaze screenshot]()
+![holidaze screenshot](https://github.com/Noroff-FEU-Assignments/project-exam-2-Jimbo-Farmer/blob/main/screenshot-holidaze.png)
 
 ## Description
 
 This is an exam project based on the brief below. 
 The final website is [here](https://neon-hamster-1b3f8e.netlify.app/).
+
+## Build Details
+
 The backend of the project was completed using Strapi CMS hosted with Heroku and Cloudinary. 
 The frontend is a Next.js app with styling in SCSS. 
 
@@ -21,6 +24,11 @@ The frontend is a Next.js app with styling in SCSS.
 - email: admin@admin.com
 - password: Admin123
 
+## Copyright
+
+- The brief below is the property of Noroff School of Technology and Digital Media.
+- Some (four) of the images are from unsplash and these contain the name of the photographer and links to the original image. The rest of the images were generated using DALL-E 2.  
+- Feel free to use any of my design and code :)  
 
 ## Brief
 
